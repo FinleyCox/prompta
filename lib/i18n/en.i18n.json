@@ -1,0 +1,52 @@
+{
+    "mainScreen": {
+        "addNew": "Add New",
+        "edit": "Edit",
+        "favourites": "Favourites"
+    },
+    "locales(map)": {
+        "ja": "日本語",
+        "en": "English"
+    },
+    "addNewPage": {
+        "title": "Add New",
+        "content": "Content",
+        "titleHint": "Enter prompt title",
+        "contentHint": "Enter prompt content",
+        "save": "Save",
+        "cancel": "Cancel"
+    },
+    "editPromptPage": {
+        "title": "Edit",
+        "titleLabel": "Title",
+        "titleHint": "Enter prompt title",
+        "contentLabel": "Content",
+        "contentHint": "Enter prompt content",
+        "save": "Save",
+        "cancel": "Cancel"
+    },
+    "promptListPage": {
+        "title": "Prompt List",
+        "search": "Search",
+        "searchHint": "Search prompts...",
+        "favourites": "Favourites",
+        "all": "All",
+        "noPrompts": "No Prompts",
+        "noFavourites": "No Favourites",
+        "noPromptsMessage": "Try adding a new prompt",
+        "promptCount": "prompts",
+        "edit": "Edit",
+        "delete": "Delete",
+        "deleteConfirm": "Delete Confirmation",
+        "deleteMessage": "Delete \"{title}\"?",
+        "today": "Today",
+        "yesterday": "Yesterday",
+        "daysAgo": "days ago",
+        "newPrompt": "Add New",
+        "cancel": "Cancel"
+    },
+    "validation": {
+        "titleRequired": "Please enter a title",
+        "contentRequired": "Please enter content"
+    }
+}

@@ -1,0 +1,7 @@
+base_locale: en
+input_directory: lib/i18n
+output_directory: lib/i18n
+output_file_name: strings.g.dart
+namespaces: false
+translate_var: t
+enum_name: AppLocale 
