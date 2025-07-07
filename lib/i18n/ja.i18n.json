@@ -1,0 +1,52 @@
+{
+    "mainScreen": {
+        "addNew": "新規作成",
+        "edit": "編集",
+        "favourites": "お気に入り"
+    },
+    "locales(map)": {
+        "ja": "日本語",
+        "en": "English"
+    },
+    "addNewPage": {
+        "title": "新規作成",
+        "content": "内容",
+        "titleHint": "プロンプトのタイトルを入力",
+        "contentHint": "プロンプトの内容を入力してください",
+        "save": "保存",
+        "cancel": "キャンセル"
+    },
+    "editPromptPage": {
+        "title": "編集",
+        "titleLabel": "タイトル",
+        "titleHint": "プロンプトのタイトルを入力",
+        "contentLabel": "内容",
+        "contentHint": "プロンプトの内容を入力してください",
+        "save": "保存",
+        "cancel": "キャンセル"
+    },
+    "promptListPage": {
+        "title": "プロンプト一覧",
+        "search": "検索",
+        "searchHint": "プロンプトを検索...",
+        "favourites": "お気に入り",
+        "all": "すべて",
+        "noPrompts": "プロンプトがありません",
+        "noFavourites": "お気に入りがありません",
+        "noPromptsMessage": "新しいプロンプトを追加してみましょう",
+        "promptCount": "個のプロンプト",
+        "edit": "編集",
+        "delete": "削除",
+        "deleteConfirm": "削除の確認",
+        "deleteMessage": "「{title}」を削除しますか？",
+        "today": "今日",
+        "yesterday": "昨日",
+        "daysAgo": "日前",
+        "newPrompt": "新規追加",
+        "cancel": "キャンセル"
+    },
+    "validation": {
+        "titleRequired": "タイトルを入力してください",
+        "contentRequired": "内容を入力してください"
+    }
+}
