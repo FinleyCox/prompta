@@ -79,4 +79,9 @@ class HiveService {
   static Future<void> close() async {
     await _promptBox?.close();
   }
+
+  // データベースをクリア（開発用）
+  static Future<void> clearDatabase() async {
+    await _promptBox?.clear();
+  }
 }

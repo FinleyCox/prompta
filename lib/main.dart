@@ -8,12 +8,14 @@ import 'services/hive_service.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Initialize slang
   await LocaleSettings.useDeviceLocale();
 
-  // Initialize Hive
+  // hiveを使用してデータを保存する
   await Hive.initFlutter();
   await HiveService.initialize();
+
+  // 開発用：データベースをクリア（スキーマ変更した時用）
+  // await HiveService.clearDatabase();
 
   runApp(const MyApp());
 }
@@ -21,7 +23,6 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return TranslationProvider(
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
             seedColor: const Color(0xFF6366F1),
             brightness: Brightness.light,
           ),
-          cardTheme: CardTheme(
+          cardTheme: CardThemeData(
             elevation: 8,
             shadowColor: Colors.black.withValues(alpha: 0.1),
             shape: RoundedRectangleBorder(
