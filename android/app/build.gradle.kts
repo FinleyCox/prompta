@@ -17,6 +17,7 @@ android {
 
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_11.toString()
+        freeCompilerArgs += listOf("-Xjvm-default=all")
     }
 
     defaultConfig {
@@ -24,7 +25,7 @@ android {
         applicationId = "com.example.plotta"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = flutter.minSdkVersion
+        minSdk = 23
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName

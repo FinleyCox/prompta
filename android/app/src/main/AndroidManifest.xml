@@ -3,6 +3,11 @@
         android:label="plotta"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        
+        <!-- Google Mobile Ads App ID (環境に応じて自動で切り替わる) -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-5173189590303230~1232003183"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
