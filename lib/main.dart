@@ -4,6 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'i18n/strings.g.dart';
 import 'pages/prompt_list_page.dart';
 import 'services/hive_service.dart';
+import 'services/ad_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,6 +14,9 @@ void main() async {
   // hiveを使用してデータを保存する
   await Hive.initFlutter();
   await HiveService.initialize();
+
+  // 広告を初期化（環境に応じて自動で切り替わる）
+  await AdService.initialize();
 
   // 開発用：データベースをクリア（スキーマ変更した時用）
   // await HiveService.clearDatabase();

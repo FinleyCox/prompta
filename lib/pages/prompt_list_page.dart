@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/prompt_model.dart';
 import '../services/hive_service.dart';
 import '../i18n/strings.g.dart';
+import '../widgets/banner_ad_widget.dart';
 import 'add_new_page.dart';
 import 'edit_prompt_page.dart';
 
@@ -266,6 +267,7 @@ class _PromptListPageState extends State<PromptListPage>
           label: Text(translations.newPrompt),
         ),
       ),
+      bottomNavigationBar: const BannerAdWidget(),
     );
   }
 
