@@ -1,4 +1,4 @@
-package com.example.prompta
+package com.example.plotta
 
 import io.flutter.embedding.android.FlutterActivity
 

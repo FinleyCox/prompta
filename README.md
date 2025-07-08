@@ -1,6 +1,6 @@
-# prompta
+# Plotta
 
-A new Flutter project.
+A Flutter app for managing prompts and settings.
 
 ## Getting Started
 
