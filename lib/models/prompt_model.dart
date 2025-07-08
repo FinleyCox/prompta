@@ -11,20 +11,28 @@ class PromptModel extends HiveObject {
   String title;
 
   @HiveField(2)
-  String content;
+  String trigger;
 
   @HiveField(3)
-  bool isFavorite;
+  String character;
 
   @HiveField(4)
-  DateTime createdAt;
+  String content;
 
   @HiveField(5)
+  bool isFavorite;
+
+  @HiveField(6)
+  DateTime createdAt;
+
+  @HiveField(7)
   DateTime updatedAt;
 
   PromptModel({
     required this.id,
-    required this.title,
+    this.title = '',
+    this.trigger = '',
+    this.character = '',
     required this.content,
     this.isFavorite = false,
     required this.createdAt,
@@ -34,6 +42,8 @@ class PromptModel extends HiveObject {
   PromptModel copyWith({
     String? id,
     String? title,
+    String? trigger,
+    String? character,
     String? content,
     bool? isFavorite,
     DateTime? createdAt,
@@ -42,6 +52,8 @@ class PromptModel extends HiveObject {
     return PromptModel(
       id: id ?? this.id,
       title: title ?? this.title,
+      trigger: trigger ?? this.trigger,
+      character: character ?? this.character,
       content: content ?? this.content,
       isFavorite: isFavorite ?? this.isFavorite,
       createdAt: createdAt ?? this.createdAt,

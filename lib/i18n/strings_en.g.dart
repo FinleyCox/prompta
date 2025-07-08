@@ -70,11 +70,16 @@ class TranslationsAddNewPageEn {
 
 	// Translations
 	String get title => 'Add New';
+	String get titleHint => 'Enter the title of this setting';
+	String get trigger => 'What inspired you to do this?';
+	String get triggerHint => 'Enter what inspired you to do this';
+	String get character => 'Characters';
+	String get characterHint => 'Enter the characters';
 	String get content => 'Content';
-	String get titleHint => 'Enter prompt title';
-	String get contentHint => 'Enter prompt content';
+	String get contentHint => 'Enter the content of this setting';
 	String get save => 'Save';
 	String get cancel => 'Cancel';
+	String get setting => 'Setting';
 }
 
 // Path: editPromptPage
@@ -86,11 +91,16 @@ class TranslationsEditPromptPageEn {
 	// Translations
 	String get title => 'Edit';
 	String get titleLabel => 'Title';
-	String get titleHint => 'Enter prompt title';
+	String get titleHint => 'Enter setting title';
+	String get triggerLabel => 'What inspired you to do this?';
+	String get triggerHint => 'Enter what inspired you to do this';
+	String get characterLabel => 'Characters';
+	String get characterHint => 'Enter the characters';
 	String get contentLabel => 'Content';
-	String get contentHint => 'Enter prompt content';
+	String get contentHint => 'Enter the content of this setting';
 	String get save => 'Save';
 	String get cancel => 'Cancel';
+	String get setting => 'Setting';
 }
 
 // Path: promptListPage
@@ -100,15 +110,15 @@ class TranslationsPromptListPageEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get title => 'Prompt List';
+	String get title => 'Settings List';
 	String get search => 'Search';
-	String get searchHint => 'Search prompts...';
+	String get searchHint => 'Search settings...';
 	String get favourites => 'Favourites';
 	String get all => 'All';
-	String get noPrompts => 'No Prompts';
+	String get noPrompts => 'No Settings';
 	String get noFavourites => 'No Favourites';
-	String get noPromptsMessage => 'Try adding a new prompt';
-	String get promptCount => 'prompts';
+	String get noPromptsMessage => 'Try adding a new setting';
+	String get promptCount => 'settings';
 	String get edit => 'Edit';
 	String get delete => 'Delete';
 	String get deleteConfirm => 'Delete Confirmation';
@@ -142,27 +152,37 @@ extension on Translations {
 			case 'locales.ja': return '日本語';
 			case 'locales.en': return 'English';
 			case 'addNewPage.title': return 'Add New';
+			case 'addNewPage.titleHint': return 'Enter the title of this setting';
+			case 'addNewPage.trigger': return 'What inspired you to do this?';
+			case 'addNewPage.triggerHint': return 'Enter what inspired you to do this';
+			case 'addNewPage.character': return 'Characters';
+			case 'addNewPage.characterHint': return 'Enter the characters';
 			case 'addNewPage.content': return 'Content';
-			case 'addNewPage.titleHint': return 'Enter prompt title';
-			case 'addNewPage.contentHint': return 'Enter prompt content';
+			case 'addNewPage.contentHint': return 'Enter the content of this setting';
 			case 'addNewPage.save': return 'Save';
 			case 'addNewPage.cancel': return 'Cancel';
+			case 'addNewPage.setting': return 'Setting';
 			case 'editPromptPage.title': return 'Edit';
 			case 'editPromptPage.titleLabel': return 'Title';
-			case 'editPromptPage.titleHint': return 'Enter prompt title';
+			case 'editPromptPage.titleHint': return 'Enter setting title';
+			case 'editPromptPage.triggerLabel': return 'What inspired you to do this?';
+			case 'editPromptPage.triggerHint': return 'Enter what inspired you to do this';
+			case 'editPromptPage.characterLabel': return 'Characters';
+			case 'editPromptPage.characterHint': return 'Enter the characters';
 			case 'editPromptPage.contentLabel': return 'Content';
-			case 'editPromptPage.contentHint': return 'Enter prompt content';
+			case 'editPromptPage.contentHint': return 'Enter the content of this setting';
 			case 'editPromptPage.save': return 'Save';
 			case 'editPromptPage.cancel': return 'Cancel';
-			case 'promptListPage.title': return 'Prompt List';
+			case 'editPromptPage.setting': return 'Setting';
+			case 'promptListPage.title': return 'Settings List';
 			case 'promptListPage.search': return 'Search';
-			case 'promptListPage.searchHint': return 'Search prompts...';
+			case 'promptListPage.searchHint': return 'Search settings...';
 			case 'promptListPage.favourites': return 'Favourites';
 			case 'promptListPage.all': return 'All';
-			case 'promptListPage.noPrompts': return 'No Prompts';
+			case 'promptListPage.noPrompts': return 'No Settings';
 			case 'promptListPage.noFavourites': return 'No Favourites';
-			case 'promptListPage.noPromptsMessage': return 'Try adding a new prompt';
-			case 'promptListPage.promptCount': return 'prompts';
+			case 'promptListPage.noPromptsMessage': return 'Try adding a new setting';
+			case 'promptListPage.promptCount': return 'settings';
 			case 'promptListPage.edit': return 'Edit';
 			case 'promptListPage.delete': return 'Delete';
 			case 'promptListPage.deleteConfirm': return 'Delete Confirmation';

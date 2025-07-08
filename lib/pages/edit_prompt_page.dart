@@ -15,6 +15,8 @@ class EditPromptPage extends StatefulWidget {
 class _EditPromptPageState extends State<EditPromptPage>
     with TickerProviderStateMixin {
   late TextEditingController _titleController;
+  late TextEditingController _triggerController;
+  late TextEditingController _characterController;
   late TextEditingController _contentController;
   late bool _isFavorite;
   late AnimationController _animationController;
@@ -25,6 +27,8 @@ class _EditPromptPageState extends State<EditPromptPage>
   void initState() {
     super.initState();
     _titleController = TextEditingController(text: widget.prompt.title);
+    _triggerController = TextEditingController(text: widget.prompt.trigger);
+    _characterController = TextEditingController(text: widget.prompt.character);
     _contentController = TextEditingController(text: widget.prompt.content);
     _isFavorite = widget.prompt.isFavorite;
 
@@ -45,6 +49,8 @@ class _EditPromptPageState extends State<EditPromptPage>
   void dispose() {
     _animationController.dispose();
     _titleController.dispose();
+    _triggerController.dispose();
+    _characterController.dispose();
     _contentController.dispose();
     super.dispose();
   }
@@ -163,6 +169,9 @@ class _EditPromptPageState extends State<EditPromptPage>
                                 controller: _titleController,
                                 decoration: InputDecoration(
                                   hintText: translations.titleHint,
+                                  hintStyle: TextStyle(
+                                    color: Colors.grey.shade400,
+                                  ),
                                   filled: true,
                                   fillColor: Colors.grey.shade50,
                                   border: OutlineInputBorder(
@@ -178,7 +187,7 @@ class _EditPromptPageState extends State<EditPromptPage>
                               ),
                               const SizedBox(height: 24),
                               Text(
-                                translations.contentLabel,
+                                translations.setting,
                                 style: const TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
@@ -187,25 +196,86 @@ class _EditPromptPageState extends State<EditPromptPage>
                               ),
                               const SizedBox(height: 8),
                               Expanded(
-                                child: TextField(
-                                  controller: _contentController,
-                                  maxLines: null,
-                                  expands: true,
-                                  textAlignVertical: TextAlignVertical.top,
-                                  decoration: InputDecoration(
-                                    hintText: translations.contentHint,
-                                    filled: true,
-                                    fillColor: Colors.grey.shade50,
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(12),
-                                      borderSide: BorderSide.none,
+                                child: Column(
+                                  children: [
+                                    TextField(
+                                      controller: _characterController,
+                                      maxLines: 1,
+                                      decoration: InputDecoration(
+                                        hintText: translations.characterHint,
+                                        hintStyle: TextStyle(
+                                          color: Colors.grey.shade400,
+                                        ),
+                                        filled: true,
+                                        fillColor: Colors.grey.shade50,
+                                        border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            12,
+                                          ),
+                                          borderSide: BorderSide.none,
+                                        ),
+                                        contentPadding:
+                                            const EdgeInsets.symmetric(
+                                              horizontal: 16,
+                                              vertical: 12,
+                                            ),
+                                      ),
+                                      style: const TextStyle(fontSize: 16),
                                     ),
-                                    contentPadding: const EdgeInsets.all(16),
-                                  ),
-                                  style: const TextStyle(
-                                    fontSize: 16,
-                                    height: 1.5,
-                                  ),
+                                    const SizedBox(height: 16),
+                                    TextField(
+                                      controller: _triggerController,
+                                      maxLines: 1,
+                                      decoration: InputDecoration(
+                                        hintText: translations.triggerHint,
+                                        hintStyle: TextStyle(
+                                          color: Colors.grey.shade400,
+                                        ),
+                                        filled: true,
+                                        fillColor: Colors.grey.shade50,
+                                        border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            12,
+                                          ),
+                                          borderSide: BorderSide.none,
+                                        ),
+                                        contentPadding:
+                                            const EdgeInsets.symmetric(
+                                              horizontal: 16,
+                                              vertical: 12,
+                                            ),
+                                      ),
+                                      style: const TextStyle(fontSize: 16),
+                                    ),
+                                    const SizedBox(height: 16),
+                                    Expanded(
+                                      child: TextField(
+                                        controller: _contentController,
+                                        maxLines: null,
+                                        expands: true,
+                                        textAlignVertical:
+                                            TextAlignVertical.top,
+                                        decoration: InputDecoration(
+                                          hintText: translations.contentHint,
+                                          hintStyle: TextStyle(
+                                            color: Colors.grey.shade400,
+                                          ),
+                                          filled: true,
+                                          fillColor: Colors.grey.shade50,
+                                          border: OutlineInputBorder(
+                                            borderRadius: BorderRadius.circular(
+                                              12,
+                                            ),
+                                            borderSide: BorderSide.none,
+                                          ),
+                                          contentPadding: const EdgeInsets.all(
+                                            16,
+                                          ),
+                                        ),
+                                        style: const TextStyle(fontSize: 16),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                               const SizedBox(height: 24),
@@ -318,17 +388,6 @@ class _EditPromptPageState extends State<EditPromptPage>
 
   void _savePrompt() async {
     final validation = context.t.validation;
-    if (_titleController.text.trim().isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(validation.titleRequired),
-          backgroundColor: Colors.red.shade400,
-          behavior: SnackBarBehavior.floating,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-        ),
-      );
-      return;
-    }
 
     if (_contentController.text.trim().isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -344,6 +403,8 @@ class _EditPromptPageState extends State<EditPromptPage>
 
     final updatedPrompt = widget.prompt.copyWith(
       title: _titleController.text.trim(),
+      trigger: _triggerController.text.trim(),
+      character: _characterController.text.trim(),
       content: _contentController.text.trim(),
       isFavorite: _isFavorite,
       updatedAt: DateTime.now(),

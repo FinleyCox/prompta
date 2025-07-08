@@ -11,7 +11,10 @@ class AddNewPage extends StatefulWidget {
 }
 
 class _AddNewPageState extends State<AddNewPage> with TickerProviderStateMixin {
+  // タイトルと内容のコントローラー
   final TextEditingController _titleController = TextEditingController();
+  final TextEditingController _triggerController = TextEditingController();
+  final TextEditingController _characterController = TextEditingController();
   final TextEditingController _contentController = TextEditingController();
   late AnimationController _animationController;
   late Animation<double> _slideAnimation;
@@ -37,25 +40,17 @@ class _AddNewPageState extends State<AddNewPage> with TickerProviderStateMixin {
   void dispose() {
     _animationController.dispose();
     _titleController.dispose();
+    _triggerController.dispose();
+    _characterController.dispose();
     _contentController.dispose();
     super.dispose();
   }
 
+  // 設定を保存する
   void _savePrompt() async {
     final validation = context.t.validation;
 
-    if (_titleController.text.trim().isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(validation.titleRequired),
-          backgroundColor: Colors.red.shade400,
-          behavior: SnackBarBehavior.floating,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-        ),
-      );
-      return;
-    }
-
+    // 内容が空の場合はエラーを表示
     if (_contentController.text.trim().isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -72,6 +67,8 @@ class _AddNewPageState extends State<AddNewPage> with TickerProviderStateMixin {
     final prompt = PromptModel(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
       title: _titleController.text.trim(),
+      trigger: _triggerController.text.trim(),
+      character: _characterController.text.trim(),
       content: _contentController.text.trim(),
       createdAt: now,
       updatedAt: now,
@@ -176,6 +173,9 @@ class _AddNewPageState extends State<AddNewPage> with TickerProviderStateMixin {
                                 controller: _titleController,
                                 decoration: InputDecoration(
                                   hintText: translations.titleHint,
+                                  hintStyle: TextStyle(
+                                    color: Colors.grey.shade400,
+                                  ),
                                   filled: true,
                                   fillColor: Colors.grey.shade50,
                                   border: OutlineInputBorder(
@@ -200,28 +200,51 @@ class _AddNewPageState extends State<AddNewPage> with TickerProviderStateMixin {
                               ),
                               const SizedBox(height: 8),
                               Expanded(
-                                child: TextField(
-                                  controller: _contentController,
-                                  maxLines: null,
-                                  expands: true,
-                                  textAlignVertical: TextAlignVertical.top,
-                                  decoration: InputDecoration(
-                                    hintText: translations.contentHint,
-                                    filled: true,
-                                    fillColor: Colors.grey.shade50,
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(12),
-                                      borderSide: BorderSide.none,
+                                child: Column(
+                                  children: [
+                                    TextField(
+                                      controller: _triggerController,
+                                      maxLines: 1,
+                                      textAlignVertical: TextAlignVertical.top,
+                                      decoration: InputDecoration(
+                                        hintText: translations.trigger,
+                                        hintStyle: TextStyle(
+                                          color: Colors.grey.shade400,
+                                        ),
+                                      ),
                                     ),
-                                    contentPadding: const EdgeInsets.all(16),
-                                  ),
-                                  style: const TextStyle(
-                                    fontSize: 16,
-                                    height: 1.5,
-                                  ),
+                                    const SizedBox(height: 16),
+                                    TextField(
+                                      controller: _characterController,
+                                      maxLines: 1,
+                                      textAlignVertical: TextAlignVertical.top,
+                                      decoration: InputDecoration(
+                                        hintText: translations.character,
+                                        hintStyle: TextStyle(
+                                          color: Colors.grey.shade400,
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 16),
+                                    Expanded(
+                                      child: TextField(
+                                        controller: _contentController,
+                                        maxLines: null,
+                                        expands: true,
+                                        textAlignVertical:
+                                            TextAlignVertical.top,
+                                        decoration: InputDecoration(
+                                          hintText: translations.contentHint,
+                                          hintStyle: TextStyle(
+                                            color: Colors.grey.shade400,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                              const SizedBox(height: 24),
+                              const SizedBox(height: 16),
                               Row(
                                 children: [
                                   Expanded(

@@ -160,6 +160,7 @@ class _PromptListPageState extends State<PromptListPage>
                   controller: _searchController,
                   decoration: InputDecoration(
                     hintText: translations.searchHint,
+                    hintStyle: TextStyle(color: Colors.grey.shade400),
                     prefixIcon: const Icon(
                       Icons.search,
                       color: Color(0xFF6366F1),
@@ -176,7 +177,7 @@ class _PromptListPageState extends State<PromptListPage>
 
               const SizedBox(height: 20),
 
-              // プロンプトリスト
+              // 設定リスト
               Expanded(
                 child:
                     _filteredPrompts.isEmpty
@@ -389,6 +390,16 @@ class _PromptListPageState extends State<PromptListPage>
               ),
               const SizedBox(height: 8),
               Text(
+                prompt.character,
+                style: TextStyle(fontSize: 14, color: Colors.grey.shade600),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                prompt.trigger,
+                style: TextStyle(fontSize: 14, color: Colors.grey.shade600),
+              ),
+              const SizedBox(height: 8),
+              Text(
                 prompt.content,
                 maxLines: 3,
                 overflow: TextOverflow.ellipsis,
@@ -458,6 +469,9 @@ class _PromptListPageState extends State<PromptListPage>
                 onPressed: () async {
                   await HiveService.deletePrompt(prompt.id);
                   Navigator.pop(context);
+                  if (mounted) {
+                    _loadPrompts();
+                  }
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.red,
