@@ -47,6 +47,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final TranslationsAddNewPageEn addNewPage = TranslationsAddNewPageEn._(_root);
 	late final TranslationsEditPromptPageEn editPromptPage = TranslationsEditPromptPageEn._(_root);
 	late final TranslationsPromptListPageEn promptListPage = TranslationsPromptListPageEn._(_root);
+	late final TranslationsChangeHistoryPageEn changeHistoryPage = TranslationsChangeHistoryPageEn._(_root);
 	late final TranslationsValidationEn validation = TranslationsValidationEn._(_root);
 }
 
@@ -69,7 +70,7 @@ class TranslationsAddNewPageEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get title => 'Add New';
+	String get title => 'title';
 	String get titleHint => 'Enter the title of this setting';
 	String get trigger => 'What inspired you to do this?';
 	String get triggerHint => 'Enter what inspired you to do this';
@@ -115,19 +116,35 @@ class TranslationsPromptListPageEn {
 	String get searchHint => 'Search settings...';
 	String get favourites => 'Favourites';
 	String get all => 'All';
-	String get noPrompts => 'No Settings';
+	String get noPrompts => 'there is no setting';
 	String get noFavourites => 'No Favourites';
 	String get noPromptsMessage => 'Try adding a new setting';
 	String get promptCount => 'settings';
 	String get edit => 'Edit';
+	String get history => 'History';
 	String get delete => 'Delete';
-	String get deleteConfirm => 'Delete Confirmation';
-	String get deleteMessage => 'Delete "{title}"?';
+	String get deleteMessage => 'Are you sure you want to delete?';
 	String get today => 'Today';
 	String get yesterday => 'Yesterday';
 	String get daysAgo => 'days ago';
 	String get newPrompt => 'Add New';
 	String get cancel => 'Cancel';
+}
+
+// Path: changeHistoryPage
+class TranslationsChangeHistoryPageEn {
+	TranslationsChangeHistoryPageEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Change History';
+	String get noTitle => '(No Title)';
+	String get character => 'Characters';
+	String get trigger => 'What inspired you to do this?';
+	String get content => 'Content';
+	String get newest => 'Newest Content';
+	String get before => 'before';
 }
 
 // Path: validation
@@ -151,7 +168,7 @@ extension on Translations {
 			case 'mainScreen.favourites': return 'Favourites';
 			case 'locales.ja': return '日本語';
 			case 'locales.en': return 'English';
-			case 'addNewPage.title': return 'Add New';
+			case 'addNewPage.title': return 'title';
 			case 'addNewPage.titleHint': return 'Enter the title of this setting';
 			case 'addNewPage.trigger': return 'What inspired you to do this?';
 			case 'addNewPage.triggerHint': return 'Enter what inspired you to do this';
@@ -179,19 +196,26 @@ extension on Translations {
 			case 'promptListPage.searchHint': return 'Search settings...';
 			case 'promptListPage.favourites': return 'Favourites';
 			case 'promptListPage.all': return 'All';
-			case 'promptListPage.noPrompts': return 'No Settings';
+			case 'promptListPage.noPrompts': return 'there is no setting';
 			case 'promptListPage.noFavourites': return 'No Favourites';
 			case 'promptListPage.noPromptsMessage': return 'Try adding a new setting';
 			case 'promptListPage.promptCount': return 'settings';
 			case 'promptListPage.edit': return 'Edit';
+			case 'promptListPage.history': return 'History';
 			case 'promptListPage.delete': return 'Delete';
-			case 'promptListPage.deleteConfirm': return 'Delete Confirmation';
-			case 'promptListPage.deleteMessage': return 'Delete "{title}"?';
+			case 'promptListPage.deleteMessage': return 'Are you sure you want to delete?';
 			case 'promptListPage.today': return 'Today';
 			case 'promptListPage.yesterday': return 'Yesterday';
 			case 'promptListPage.daysAgo': return 'days ago';
 			case 'promptListPage.newPrompt': return 'Add New';
 			case 'promptListPage.cancel': return 'Cancel';
+			case 'changeHistoryPage.title': return 'Change History';
+			case 'changeHistoryPage.noTitle': return '(No Title)';
+			case 'changeHistoryPage.character': return 'Characters';
+			case 'changeHistoryPage.trigger': return 'What inspired you to do this?';
+			case 'changeHistoryPage.content': return 'Content';
+			case 'changeHistoryPage.newest': return 'Newest Content';
+			case 'changeHistoryPage.before': return 'before';
 			case 'validation.titleRequired': return 'Please enter a title';
 			case 'validation.contentRequired': return 'Please enter content';
 			default: return null;

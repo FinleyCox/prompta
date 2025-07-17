@@ -5,6 +5,7 @@ import '../i18n/strings.g.dart';
 import '../widgets/banner_ad_widget.dart';
 import 'add_new_page.dart';
 import 'edit_prompt_page.dart';
+import 'change_history_page.dart';
 
 class PromptListPage extends StatefulWidget {
   const PromptListPage({super.key});
@@ -201,7 +202,9 @@ class _PromptListPageState extends State<PromptListPage>
                               ),
                               const SizedBox(height: 8),
                               Text(
-                                translations.noPromptsMessage,
+                                _showFavoritesOnly
+                                    ? translations.noFavourites
+                                    : translations.noPromptsMessage,
                                 style: TextStyle(
                                   fontSize: 14,
                                   color: Colors.white.withValues(alpha: 0.6),
@@ -267,7 +270,7 @@ class _PromptListPageState extends State<PromptListPage>
           label: Text(translations.newPrompt),
         ),
       ),
-      bottomNavigationBar: const BannerAdWidget(),
+      bottomNavigationBar: SafeArea(child: const BannerAdWidget()),
     );
   }
 
@@ -350,6 +353,19 @@ class _PromptListPageState extends State<PromptListPage>
                                   _loadPrompts();
                                 }
                                 break;
+                              case 'history':
+                                final result = await Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder:
+                                        (context) =>
+                                            ChangeHistoryPage(prompt: prompt),
+                                  ),
+                                );
+                                if (mounted && result == true) {
+                                  _loadPrompts();
+                                }
+                                break;
                               case 'delete':
                                 _showDeleteDialog(prompt);
                                 break;
@@ -367,6 +383,19 @@ class _PromptListPageState extends State<PromptListPage>
                                       ),
                                       const SizedBox(width: 8),
                                       Text(translations.edit),
+                                    ],
+                                  ),
+                                ),
+                                PopupMenuItem(
+                                  value: 'history',
+                                  child: Row(
+                                    children: [
+                                      const Icon(
+                                        Icons.history,
+                                        color: Colors.blue,
+                                      ),
+                                      const SizedBox(width: 8),
+                                      Text(translations.history),
                                     ],
                                   ),
                                 ),
@@ -458,10 +487,7 @@ class _PromptListPageState extends State<PromptListPage>
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),
             ),
-            title: Text(translations.deleteConfirm),
-            content: Text(
-              translations.deleteMessage.replaceAll('{title}', prompt.title),
-            ),
+            title: Text(translations.deleteMessage),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),

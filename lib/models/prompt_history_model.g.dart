@@ -1,53 +1,53 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'prompt_model.dart';
+part of 'prompt_history_model.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class PromptModelAdapter extends TypeAdapter<PromptModel> {
+class PromptHistoryModelAdapter extends TypeAdapter<PromptHistoryModel> {
   @override
-  final int typeId = 0;
+  final int typeId = 1;
 
   @override
-  PromptModel read(BinaryReader reader) {
+  PromptHistoryModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return PromptModel(
+    return PromptHistoryModel(
       id: fields[0] as String,
-      title: fields[1] as String,
-      trigger: fields[2] as String,
-      character: fields[3] as String,
-      content: fields[4] as String,
-      isFavorite: fields[5] as bool,
-      createdAt: fields[6] as DateTime,
-      updatedAt: fields[7] as DateTime,
+      promptId: fields[1] as String,
+      title: fields[2] as String,
+      trigger: fields[3] as String,
+      character: fields[4] as String,
+      content: fields[5] as String,
+      isFavorite: fields[6] as bool,
+      savedAt: fields[7] as DateTime,
     );
   }
 
   @override
-  void write(BinaryWriter writer, PromptModel obj) {
+  void write(BinaryWriter writer, PromptHistoryModel obj) {
     writer
       ..writeByte(8)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.title)
+      ..write(obj.promptId)
       ..writeByte(2)
-      ..write(obj.trigger)
+      ..write(obj.title)
       ..writeByte(3)
-      ..write(obj.character)
+      ..write(obj.trigger)
       ..writeByte(4)
-      ..write(obj.content)
+      ..write(obj.character)
       ..writeByte(5)
-      ..write(obj.isFavorite)
+      ..write(obj.content)
       ..writeByte(6)
-      ..write(obj.createdAt)
+      ..write(obj.isFavorite)
       ..writeByte(7)
-      ..write(obj.updatedAt);
+      ..write(obj.savedAt);
   }
 
   @override
@@ -56,7 +56,7 @@ class PromptModelAdapter extends TypeAdapter<PromptModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is PromptModelAdapter &&
+      other is PromptHistoryModelAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
