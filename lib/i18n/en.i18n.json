@@ -10,41 +10,41 @@
     },
     "addNewPage": {
         "title": "title",
-        "titleHint": "Enter the title of this setting",
+        "titleHint": "Enter the title of this plot",
         "trigger": "What inspired you to do this?",
         "triggerHint": "Enter what inspired you to do this",
         "character": "Characters",
         "characterHint": "Enter the characters",
         "content": "Content",
-        "contentHint": "Enter the content of this setting",
+        "contentHint": "Enter the content of this plot",
         "save": "Save",
         "cancel": "Cancel",
-        "setting": "Setting"
+        "setting": "Plot"
     },
     "editPromptPage": {
         "title": "Edit",
         "titleLabel": "Title",
-        "titleHint": "Enter setting title",
+        "titleHint": "Enter plot title",
         "triggerLabel": "What inspired you to do this?",
         "triggerHint": "Enter what inspired you to do this",
         "characterLabel": "Characters",
         "characterHint": "Enter the characters",
         "contentLabel": "Content",
-        "contentHint": "Enter the content of this setting",
+        "contentHint": "Enter the content of this plot",
         "save": "Save",
         "cancel": "Cancel",
-        "setting": "Setting"
+        "setting": "Plot"
     },
     "promptListPage": {
-        "title": "Settings List",
+        "title": "Plots List",
         "search": "Search",
-        "searchHint": "Search settings...",
+        "searchHint": "Search plots...",
         "favourites": "Favourites",
         "all": "All",
-        "noPrompts": "there is no setting",
+        "noPrompts": "there is no plot",
         "noFavourites": "No Favourites",
-        "noPromptsMessage": "Try adding a new setting",
-        "promptCount": "settings",
+        "noPromptsMessage": "Try adding a new plot",
+        "promptCount": "plots",
         "edit": "Edit",
         "history": "History",
         "delete": "Delete",
@@ -53,7 +53,8 @@
         "yesterday": "Yesterday",
         "daysAgo": "days ago",
         "newPrompt": "Add New",
-        "cancel": "Cancel"
+        "cancel": "Cancel",
+        "privacyPolicy": "Privacy Policy"
     },
     "changeHistoryPage": {
         "title": "Change History",
@@ -63,6 +64,24 @@
         "content": "Content",
         "newest": "Newest Content",
         "before": "before"
+    },
+    "privacyPolicyPage": {
+        "title": "Privacy Policy",
+        "lastUpdated": "Last updated: July 2025",
+        "section1Title": "1. Information We Collect",
+        "section1Content": "This app collects and stores your plot settings locally on your device. We do not collect any personal information or transmit data to external servers. All data is stored securely on your device using local storage.",
+        "section2Title": "2. How We Use Your Information",
+        "section2Content": "The information you create in this app is used solely to provide you with the functionality to save, edit, and manage your plot settings. We do not use your data for any other purpose.",
+        "section3Title": "3. Data Storage",
+        "section3Content": "All your data is stored locally on your device using secure local storage. We do not have access to your data, and it is not transmitted to our servers or any third parties.",
+        "section4Title": "4. Data Security",
+        "section4Content": "Your data is protected by your device's security measures. We implement industry-standard security practices to ensure your data remains secure on your device.",
+        "section5Title": "5. Third-Party Services",
+        "section5Content": "This app may display advertisements through third-party ad services. These services may collect anonymous usage data for advertising purposes. Please refer to their respective privacy policies for more information.",
+        "section6Title": "6. Changes to This Policy",
+        "section6Content": "We may update this privacy policy from time to time. We will notify you of any changes by posting the new privacy policy on this page and updating the 'Last updated' date.",
+        "contactTitle": "Contact Us",
+        "contactContent": "If you have any questions about this privacy policy, please contact us through the app store."
     },
     "validation": {
         "titleRequired": "Please enter a title",

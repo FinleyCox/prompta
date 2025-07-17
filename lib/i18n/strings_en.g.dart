@@ -48,6 +48,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final TranslationsEditPromptPageEn editPromptPage = TranslationsEditPromptPageEn._(_root);
 	late final TranslationsPromptListPageEn promptListPage = TranslationsPromptListPageEn._(_root);
 	late final TranslationsChangeHistoryPageEn changeHistoryPage = TranslationsChangeHistoryPageEn._(_root);
+	late final TranslationsPrivacyPolicyPageEn privacyPolicyPage = TranslationsPrivacyPolicyPageEn._(_root);
 	late final TranslationsValidationEn validation = TranslationsValidationEn._(_root);
 }
 
@@ -71,16 +72,16 @@ class TranslationsAddNewPageEn {
 
 	// Translations
 	String get title => 'title';
-	String get titleHint => 'Enter the title of this setting';
+	String get titleHint => 'Enter the title of this plot';
 	String get trigger => 'What inspired you to do this?';
 	String get triggerHint => 'Enter what inspired you to do this';
 	String get character => 'Characters';
 	String get characterHint => 'Enter the characters';
 	String get content => 'Content';
-	String get contentHint => 'Enter the content of this setting';
+	String get contentHint => 'Enter the content of this plot';
 	String get save => 'Save';
 	String get cancel => 'Cancel';
-	String get setting => 'Setting';
+	String get setting => 'Plot';
 }
 
 // Path: editPromptPage
@@ -92,16 +93,16 @@ class TranslationsEditPromptPageEn {
 	// Translations
 	String get title => 'Edit';
 	String get titleLabel => 'Title';
-	String get titleHint => 'Enter setting title';
+	String get titleHint => 'Enter plot title';
 	String get triggerLabel => 'What inspired you to do this?';
 	String get triggerHint => 'Enter what inspired you to do this';
 	String get characterLabel => 'Characters';
 	String get characterHint => 'Enter the characters';
 	String get contentLabel => 'Content';
-	String get contentHint => 'Enter the content of this setting';
+	String get contentHint => 'Enter the content of this plot';
 	String get save => 'Save';
 	String get cancel => 'Cancel';
-	String get setting => 'Setting';
+	String get setting => 'Plot';
 }
 
 // Path: promptListPage
@@ -111,15 +112,15 @@ class TranslationsPromptListPageEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get title => 'Settings List';
+	String get title => 'Plots List';
 	String get search => 'Search';
-	String get searchHint => 'Search settings...';
+	String get searchHint => 'Search plots...';
 	String get favourites => 'Favourites';
 	String get all => 'All';
-	String get noPrompts => 'there is no setting';
+	String get noPrompts => 'there is no plot';
 	String get noFavourites => 'No Favourites';
-	String get noPromptsMessage => 'Try adding a new setting';
-	String get promptCount => 'settings';
+	String get noPromptsMessage => 'Try adding a new plot';
+	String get promptCount => 'plots';
 	String get edit => 'Edit';
 	String get history => 'History';
 	String get delete => 'Delete';
@@ -129,6 +130,7 @@ class TranslationsPromptListPageEn {
 	String get daysAgo => 'days ago';
 	String get newPrompt => 'Add New';
 	String get cancel => 'Cancel';
+	String get privacyPolicy => 'Privacy Policy';
 }
 
 // Path: changeHistoryPage
@@ -145,6 +147,31 @@ class TranslationsChangeHistoryPageEn {
 	String get content => 'Content';
 	String get newest => 'Newest Content';
 	String get before => 'before';
+}
+
+// Path: privacyPolicyPage
+class TranslationsPrivacyPolicyPageEn {
+	TranslationsPrivacyPolicyPageEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Privacy Policy';
+	String get lastUpdated => 'Last updated: July 2025';
+	String get section1Title => '1. Information We Collect';
+	String get section1Content => 'This app collects and stores your plot settings locally on your device. We do not collect any personal information or transmit data to external servers. All data is stored securely on your device using local storage.';
+	String get section2Title => '2. How We Use Your Information';
+	String get section2Content => 'The information you create in this app is used solely to provide you with the functionality to save, edit, and manage your plot settings. We do not use your data for any other purpose.';
+	String get section3Title => '3. Data Storage';
+	String get section3Content => 'All your data is stored locally on your device using secure local storage. We do not have access to your data, and it is not transmitted to our servers or any third parties.';
+	String get section4Title => '4. Data Security';
+	String get section4Content => 'Your data is protected by your device\'s security measures. We implement industry-standard security practices to ensure your data remains secure on your device.';
+	String get section5Title => '5. Third-Party Services';
+	String get section5Content => 'This app may display advertisements through third-party ad services. These services may collect anonymous usage data for advertising purposes. Please refer to their respective privacy policies for more information.';
+	String get section6Title => '6. Changes to This Policy';
+	String get section6Content => 'We may update this privacy policy from time to time. We will notify you of any changes by posting the new privacy policy on this page and updating the \'Last updated\' date.';
+	String get contactTitle => 'Contact Us';
+	String get contactContent => 'If you have any questions about this privacy policy, please contact us through the app store.';
 }
 
 // Path: validation
@@ -169,37 +196,37 @@ extension on Translations {
 			case 'locales.ja': return '日本語';
 			case 'locales.en': return 'English';
 			case 'addNewPage.title': return 'title';
-			case 'addNewPage.titleHint': return 'Enter the title of this setting';
+			case 'addNewPage.titleHint': return 'Enter the title of this plot';
 			case 'addNewPage.trigger': return 'What inspired you to do this?';
 			case 'addNewPage.triggerHint': return 'Enter what inspired you to do this';
 			case 'addNewPage.character': return 'Characters';
 			case 'addNewPage.characterHint': return 'Enter the characters';
 			case 'addNewPage.content': return 'Content';
-			case 'addNewPage.contentHint': return 'Enter the content of this setting';
+			case 'addNewPage.contentHint': return 'Enter the content of this plot';
 			case 'addNewPage.save': return 'Save';
 			case 'addNewPage.cancel': return 'Cancel';
-			case 'addNewPage.setting': return 'Setting';
+			case 'addNewPage.setting': return 'Plot';
 			case 'editPromptPage.title': return 'Edit';
 			case 'editPromptPage.titleLabel': return 'Title';
-			case 'editPromptPage.titleHint': return 'Enter setting title';
+			case 'editPromptPage.titleHint': return 'Enter plot title';
 			case 'editPromptPage.triggerLabel': return 'What inspired you to do this?';
 			case 'editPromptPage.triggerHint': return 'Enter what inspired you to do this';
 			case 'editPromptPage.characterLabel': return 'Characters';
 			case 'editPromptPage.characterHint': return 'Enter the characters';
 			case 'editPromptPage.contentLabel': return 'Content';
-			case 'editPromptPage.contentHint': return 'Enter the content of this setting';
+			case 'editPromptPage.contentHint': return 'Enter the content of this plot';
 			case 'editPromptPage.save': return 'Save';
 			case 'editPromptPage.cancel': return 'Cancel';
-			case 'editPromptPage.setting': return 'Setting';
-			case 'promptListPage.title': return 'Settings List';
+			case 'editPromptPage.setting': return 'Plot';
+			case 'promptListPage.title': return 'Plots List';
 			case 'promptListPage.search': return 'Search';
-			case 'promptListPage.searchHint': return 'Search settings...';
+			case 'promptListPage.searchHint': return 'Search plots...';
 			case 'promptListPage.favourites': return 'Favourites';
 			case 'promptListPage.all': return 'All';
-			case 'promptListPage.noPrompts': return 'there is no setting';
+			case 'promptListPage.noPrompts': return 'there is no plot';
 			case 'promptListPage.noFavourites': return 'No Favourites';
-			case 'promptListPage.noPromptsMessage': return 'Try adding a new setting';
-			case 'promptListPage.promptCount': return 'settings';
+			case 'promptListPage.noPromptsMessage': return 'Try adding a new plot';
+			case 'promptListPage.promptCount': return 'plots';
 			case 'promptListPage.edit': return 'Edit';
 			case 'promptListPage.history': return 'History';
 			case 'promptListPage.delete': return 'Delete';
@@ -209,6 +236,7 @@ extension on Translations {
 			case 'promptListPage.daysAgo': return 'days ago';
 			case 'promptListPage.newPrompt': return 'Add New';
 			case 'promptListPage.cancel': return 'Cancel';
+			case 'promptListPage.privacyPolicy': return 'Privacy Policy';
 			case 'changeHistoryPage.title': return 'Change History';
 			case 'changeHistoryPage.noTitle': return '(No Title)';
 			case 'changeHistoryPage.character': return 'Characters';
@@ -216,6 +244,22 @@ extension on Translations {
 			case 'changeHistoryPage.content': return 'Content';
 			case 'changeHistoryPage.newest': return 'Newest Content';
 			case 'changeHistoryPage.before': return 'before';
+			case 'privacyPolicyPage.title': return 'Privacy Policy';
+			case 'privacyPolicyPage.lastUpdated': return 'Last updated: July 2025';
+			case 'privacyPolicyPage.section1Title': return '1. Information We Collect';
+			case 'privacyPolicyPage.section1Content': return 'This app collects and stores your plot settings locally on your device. We do not collect any personal information or transmit data to external servers. All data is stored securely on your device using local storage.';
+			case 'privacyPolicyPage.section2Title': return '2. How We Use Your Information';
+			case 'privacyPolicyPage.section2Content': return 'The information you create in this app is used solely to provide you with the functionality to save, edit, and manage your plot settings. We do not use your data for any other purpose.';
+			case 'privacyPolicyPage.section3Title': return '3. Data Storage';
+			case 'privacyPolicyPage.section3Content': return 'All your data is stored locally on your device using secure local storage. We do not have access to your data, and it is not transmitted to our servers or any third parties.';
+			case 'privacyPolicyPage.section4Title': return '4. Data Security';
+			case 'privacyPolicyPage.section4Content': return 'Your data is protected by your device\'s security measures. We implement industry-standard security practices to ensure your data remains secure on your device.';
+			case 'privacyPolicyPage.section5Title': return '5. Third-Party Services';
+			case 'privacyPolicyPage.section5Content': return 'This app may display advertisements through third-party ad services. These services may collect anonymous usage data for advertising purposes. Please refer to their respective privacy policies for more information.';
+			case 'privacyPolicyPage.section6Title': return '6. Changes to This Policy';
+			case 'privacyPolicyPage.section6Content': return 'We may update this privacy policy from time to time. We will notify you of any changes by posting the new privacy policy on this page and updating the \'Last updated\' date.';
+			case 'privacyPolicyPage.contactTitle': return 'Contact Us';
+			case 'privacyPolicyPage.contactContent': return 'If you have any questions about this privacy policy, please contact us through the app store.';
 			case 'validation.titleRequired': return 'Please enter a title';
 			case 'validation.contentRequired': return 'Please enter content';
 			default: return null;
