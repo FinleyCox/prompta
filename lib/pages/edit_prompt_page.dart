@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/prompt_model.dart';
 import '../services/hive_service.dart';
 import '../i18n/strings.g.dart';
+import '../models/prompt_history_model.dart';
 
 class EditPromptPage extends StatefulWidget {
   final PromptModel prompt;
@@ -22,6 +23,7 @@ class _EditPromptPageState extends State<EditPromptPage>
   late AnimationController _animationController;
   late Animation<double> _slideAnimation;
   late Animation<double> _fadeAnimation;
+  bool _isKeyboardVisible = false;
 
   @override
   void initState() {
@@ -53,6 +55,21 @@ class _EditPromptPageState extends State<EditPromptPage>
     _characterController.dispose();
     _contentController.dispose();
     super.dispose();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // キーボードの表示状態を監視
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final keyboardHeight = MediaQuery.of(context).viewInsets.bottom;
+      final newKeyboardVisible = keyboardHeight > 0;
+      if (_isKeyboardVisible != newKeyboardVisible) {
+        setState(() {
+          _isKeyboardVisible = newKeyboardVisible;
+        });
+      }
+    });
   }
 
   @override
@@ -278,99 +295,105 @@ class _EditPromptPageState extends State<EditPromptPage>
                                   ],
                                 ),
                               ),
-                              const SizedBox(height: 24),
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(12),
-                                        border: Border.all(
-                                          color: Colors.grey.shade300,
-                                        ),
-                                      ),
-                                      child: OutlinedButton(
-                                        onPressed: () => Navigator.pop(context),
-                                        style: OutlinedButton.styleFrom(
-                                          foregroundColor: Colors.grey.shade600,
-                                          padding: const EdgeInsets.symmetric(
-                                            vertical: 16,
+                              const SizedBox(height: 16),
+                              if (!_isKeyboardVisible) ...[
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(
+                                            12,
                                           ),
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(
-                                              12,
-                                            ),
-                                          ),
-                                        ),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            const Icon(Icons.close, size: 20),
-                                            const SizedBox(width: 8),
-                                            Text(
-                                              translations.cancel,
-                                              style: const TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w500,
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Colors.black.withValues(
+                                                alpha: 0.1,
                                               ),
+                                              blurRadius: 8,
+                                              offset: const Offset(0, 4),
                                             ),
                                           ],
                                         ),
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(width: 16),
-                                  Expanded(
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(12),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: Colors.black.withValues(
-                                              alpha: 0.1,
+                                        child: ElevatedButton(
+                                          onPressed: _savePrompt,
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor: const Color(
+                                              0xFF6366F1,
                                             ),
-                                            blurRadius: 8,
-                                            offset: const Offset(0, 4),
-                                          ),
-                                        ],
-                                      ),
-                                      child: ElevatedButton(
-                                        onPressed: _savePrompt,
-                                        style: ElevatedButton.styleFrom(
-                                          backgroundColor: const Color(
-                                            0xFF6366F1,
-                                          ),
-                                          foregroundColor: Colors.white,
-                                          padding: const EdgeInsets.symmetric(
-                                            vertical: 16,
-                                          ),
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(
-                                              12,
+                                            foregroundColor: Colors.white,
+                                            padding: const EdgeInsets.symmetric(
+                                              vertical: 16,
+                                            ),
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(12),
                                             ),
                                           ),
-                                        ),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            const Icon(Icons.save, size: 20),
-                                            const SizedBox(width: 8),
-                                            Text(
-                                              translations.save,
-                                              style: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.bold,
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              const Icon(Icons.save, size: 20),
+                                              const SizedBox(width: 8),
+                                              Text(
+                                                translations.save,
+                                                style: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
-                              ),
+                                    const SizedBox(width: 16),
+                                    Expanded(
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(
+                                            12,
+                                          ),
+                                          border: Border.all(
+                                            color: Colors.grey.shade300,
+                                          ),
+                                        ),
+                                        child: OutlinedButton(
+                                          onPressed:
+                                              () => Navigator.pop(context),
+                                          style: OutlinedButton.styleFrom(
+                                            foregroundColor:
+                                                Colors.grey.shade600,
+                                            padding: const EdgeInsets.symmetric(
+                                              vertical: 16,
+                                            ),
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(12),
+                                            ),
+                                          ),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              const Icon(Icons.close, size: 20),
+                                              const SizedBox(width: 8),
+                                              Text(
+                                                translations.cancel,
+                                                style: const TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ],
                           ),
                         ),
@@ -409,6 +432,19 @@ class _EditPromptPageState extends State<EditPromptPage>
       isFavorite: _isFavorite,
       updatedAt: DateTime.now(),
     );
+
+    // 履歴を保存
+    final history = PromptHistoryModel(
+      id: DateTime.now().millisecondsSinceEpoch.toString(),
+      promptId: widget.prompt.id,
+      title: widget.prompt.title,
+      trigger: widget.prompt.trigger,
+      character: widget.prompt.character,
+      content: widget.prompt.content,
+      isFavorite: widget.prompt.isFavorite,
+      savedAt: DateTime.now(),
+    );
+    await HiveService.addPromptHistory(history);
 
     await HiveService.updatePrompt(updatedPrompt);
 

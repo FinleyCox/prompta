@@ -44,6 +44,7 @@ class TranslationsJa implements Translations {
 	@override late final _TranslationsAddNewPageJa addNewPage = _TranslationsAddNewPageJa._(_root);
 	@override late final _TranslationsEditPromptPageJa editPromptPage = _TranslationsEditPromptPageJa._(_root);
 	@override late final _TranslationsPromptListPageJa promptListPage = _TranslationsPromptListPageJa._(_root);
+	@override late final _TranslationsChangeHistoryPageJa changeHistoryPage = _TranslationsChangeHistoryPageJa._(_root);
 	@override late final _TranslationsValidationJa validation = _TranslationsValidationJa._(_root);
 }
 
@@ -66,12 +67,12 @@ class _TranslationsAddNewPageJa implements TranslationsAddNewPageEn {
 	final TranslationsJa _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => '新規作成';
+	@override String get title => 'タイトル';
 	@override String get titleHint => 'この設定のタイトルを入力';
 	@override String get trigger => 'これを思いついたきっかけ';
 	@override String get triggerHint => 'これを思いついたきっかけを入力';
-	@override String get character => '登場人物';
-	@override String get characterHint => '登場人物を入力';
+	@override String get character => '人物';
+	@override String get characterHint => '人物などを入力';
 	@override String get content => '内容';
 	@override String get contentHint => 'この設定の内容を入力してください';
 	@override String get save => '保存';
@@ -89,8 +90,8 @@ class _TranslationsEditPromptPageJa implements TranslationsEditPromptPageEn {
 	@override String get title => '編集';
 	@override String get titleLabel => 'タイトル';
 	@override String get titleHint => '設定のタイトルを入力';
-	@override String get characterLabel => '登場人物';
-	@override String get characterHint => '登場人物を入力';
+	@override String get characterLabel => '人物など';
+	@override String get characterHint => '人物などを入力';
 	@override String get triggerLabel => 'きっかけ';
 	@override String get triggerHint => 'これを書いたきっかけを入力してください';
 	@override String get contentLabel => '内容';
@@ -112,19 +113,35 @@ class _TranslationsPromptListPageJa implements TranslationsPromptListPageEn {
 	@override String get searchHint => '設定を検索...';
 	@override String get favourites => 'お気に入り';
 	@override String get all => 'すべて';
-	@override String get noPrompts => '設定がありません';
+	@override String get noPrompts => 'なし';
 	@override String get noFavourites => 'お気に入りがありません';
 	@override String get noPromptsMessage => '新しい設定を追加してみましょう';
 	@override String get promptCount => '個の設定';
 	@override String get edit => '編集';
+	@override String get history => '変更履歴';
 	@override String get delete => '削除';
-	@override String get deleteConfirm => '削除の確認';
-	@override String get deleteMessage => '「{title}」を削除しますか？';
+	@override String get deleteMessage => '本当に削除しますか？';
 	@override String get today => '今日';
 	@override String get yesterday => '昨日';
 	@override String get daysAgo => '日前';
 	@override String get newPrompt => '新規追加';
 	@override String get cancel => 'キャンセル';
+}
+
+// Path: changeHistoryPage
+class _TranslationsChangeHistoryPageJa implements TranslationsChangeHistoryPageEn {
+	_TranslationsChangeHistoryPageJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '変更履歴';
+	@override String get noTitle => '(タイトルなし)';
+	@override String get character => '人物など';
+	@override String get trigger => 'きっかけ';
+	@override String get content => '内容';
+	@override String get newest => '最新の内容';
+	@override String get before => '件前';
 }
 
 // Path: validation
@@ -148,12 +165,12 @@ extension on TranslationsJa {
 			case 'mainScreen.favourites': return 'お気に入り';
 			case 'locales.ja': return '日本語';
 			case 'locales.en': return 'English';
-			case 'addNewPage.title': return '新規作成';
+			case 'addNewPage.title': return 'タイトル';
 			case 'addNewPage.titleHint': return 'この設定のタイトルを入力';
 			case 'addNewPage.trigger': return 'これを思いついたきっかけ';
 			case 'addNewPage.triggerHint': return 'これを思いついたきっかけを入力';
-			case 'addNewPage.character': return '登場人物';
-			case 'addNewPage.characterHint': return '登場人物を入力';
+			case 'addNewPage.character': return '人物';
+			case 'addNewPage.characterHint': return '人物などを入力';
 			case 'addNewPage.content': return '内容';
 			case 'addNewPage.contentHint': return 'この設定の内容を入力してください';
 			case 'addNewPage.save': return '保存';
@@ -162,8 +179,8 @@ extension on TranslationsJa {
 			case 'editPromptPage.title': return '編集';
 			case 'editPromptPage.titleLabel': return 'タイトル';
 			case 'editPromptPage.titleHint': return '設定のタイトルを入力';
-			case 'editPromptPage.characterLabel': return '登場人物';
-			case 'editPromptPage.characterHint': return '登場人物を入力';
+			case 'editPromptPage.characterLabel': return '人物など';
+			case 'editPromptPage.characterHint': return '人物などを入力';
 			case 'editPromptPage.triggerLabel': return 'きっかけ';
 			case 'editPromptPage.triggerHint': return 'これを書いたきっかけを入力してください';
 			case 'editPromptPage.contentLabel': return '内容';
@@ -176,19 +193,26 @@ extension on TranslationsJa {
 			case 'promptListPage.searchHint': return '設定を検索...';
 			case 'promptListPage.favourites': return 'お気に入り';
 			case 'promptListPage.all': return 'すべて';
-			case 'promptListPage.noPrompts': return '設定がありません';
+			case 'promptListPage.noPrompts': return 'なし';
 			case 'promptListPage.noFavourites': return 'お気に入りがありません';
 			case 'promptListPage.noPromptsMessage': return '新しい設定を追加してみましょう';
 			case 'promptListPage.promptCount': return '個の設定';
 			case 'promptListPage.edit': return '編集';
+			case 'promptListPage.history': return '変更履歴';
 			case 'promptListPage.delete': return '削除';
-			case 'promptListPage.deleteConfirm': return '削除の確認';
-			case 'promptListPage.deleteMessage': return '「{title}」を削除しますか？';
+			case 'promptListPage.deleteMessage': return '本当に削除しますか？';
 			case 'promptListPage.today': return '今日';
 			case 'promptListPage.yesterday': return '昨日';
 			case 'promptListPage.daysAgo': return '日前';
 			case 'promptListPage.newPrompt': return '新規追加';
 			case 'promptListPage.cancel': return 'キャンセル';
+			case 'changeHistoryPage.title': return '変更履歴';
+			case 'changeHistoryPage.noTitle': return '(タイトルなし)';
+			case 'changeHistoryPage.character': return '人物など';
+			case 'changeHistoryPage.trigger': return 'きっかけ';
+			case 'changeHistoryPage.content': return '内容';
+			case 'changeHistoryPage.newest': return '最新の内容';
+			case 'changeHistoryPage.before': return '件前';
 			case 'validation.titleRequired': return 'タイトルを入力してください';
 			case 'validation.contentRequired': return '内容を入力してください';
 			default: return null;

@@ -18,9 +18,6 @@ void main() async {
   // 広告を初期化（環境に応じて自動で切り替わる）
   await AdService.initialize();
 
-  // 開発用：データベースをクリア（スキーマ変更した時用）
-  // await HiveService.clearDatabase();
-
   runApp(const MyApp());
 }
 

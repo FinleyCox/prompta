@@ -9,7 +9,7 @@
         "en": "English"
     },
     "addNewPage": {
-        "title": "Add New",
+        "title": "title",
         "titleHint": "Enter the title of this setting",
         "trigger": "What inspired you to do this?",
         "triggerHint": "Enter what inspired you to do this",
@@ -41,19 +41,28 @@
         "searchHint": "Search settings...",
         "favourites": "Favourites",
         "all": "All",
-        "noPrompts": "No Settings",
+        "noPrompts": "there is no setting",
         "noFavourites": "No Favourites",
         "noPromptsMessage": "Try adding a new setting",
         "promptCount": "settings",
         "edit": "Edit",
+        "history": "History",
         "delete": "Delete",
-        "deleteConfirm": "Delete Confirmation",
-        "deleteMessage": "Delete \"{title}\"?",
+        "deleteMessage": "Are you sure you want to delete?",
         "today": "Today",
         "yesterday": "Yesterday",
         "daysAgo": "days ago",
         "newPrompt": "Add New",
         "cancel": "Cancel"
+    },
+    "changeHistoryPage": {
+        "title": "Change History",
+        "noTitle": "(No Title)",
+        "character": "Characters",
+        "trigger": "What inspired you to do this?",
+        "content": "Content",
+        "newest": "Newest Content",
+        "before": "before"
     },
     "validation": {
         "titleRequired": "Please enter a title",
