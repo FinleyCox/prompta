@@ -31,7 +31,6 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
           });
         },
         onAdFailedToLoad: (ad, error) {
-          debugPrint('Ad failed to load: ${error.code}');
           ad.dispose();
         },
       ),

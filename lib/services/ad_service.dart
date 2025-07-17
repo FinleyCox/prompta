@@ -30,11 +30,9 @@ class AdService {
 
   // 環境に応じてバナー広告ユニットIDを取得
   static String get bannerAdUnitId {
-    if (kDebugMode) {
-      return _testBannerAdUnitId;
-    } else {
-      return _productionBannerAdUnitId;
-    }
+    final isDebug = kDebugMode;
+    final adUnitId = isDebug ? _testBannerAdUnitId : _productionBannerAdUnitId;
+    return adUnitId;
   }
 
   // テストデバイスIDを取得
@@ -56,23 +54,14 @@ class AdService {
 
   // バナー広告を作成
   static BannerAd createBannerAd() {
+    final adUnitId = bannerAdUnitId;
     return BannerAd(
-      adUnitId: bannerAdUnitId,
+      adUnitId: adUnitId,
       size: AdSize.banner,
       request: const AdRequest(),
       listener: BannerAdListener(
-        onAdLoaded: (ad) {
-          debugPrint('Ad loaded successfully');
-        },
         onAdFailedToLoad: (ad, error) {
-          debugPrint('Ad failed to load: ${error.code}');
           ad.dispose();
-        },
-        onAdOpened: (ad) {
-          debugPrint('Ad opened');
-        },
-        onAdClosed: (ad) {
-          debugPrint('Ad closed');
         },
       ),
     );
