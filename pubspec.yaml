@@ -40,6 +40,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   google_mobile_ads: ^4.0.0
+  flutter_launcher_icons: ^0.14.1
 
 dev_dependencies:
   flutter_test:
@@ -95,3 +96,10 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+flutter_icons: 
+  image_path_android: assets/launcher_icon/android_icon.png
+  adaptive_icon_background: '#000000' #iconの背景色
+  adaptive_icon_foreground: assets/launcher_icon/android_icon.png
+  android: true
+  adaptive_icon_padding: true
+  min_sdk_android: 30 #Androidの最小SDKバージョン
