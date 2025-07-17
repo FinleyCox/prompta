@@ -6,6 +6,7 @@ import '../widgets/banner_ad_widget.dart';
 import 'add_new_page.dart';
 import 'edit_prompt_page.dart';
 import 'change_history_page.dart';
+import 'privacy_policy_page.dart';
 
 class PromptListPage extends StatefulWidget {
   const PromptListPage({super.key});
@@ -138,6 +139,94 @@ class _PromptListPageState extends State<PromptListPage>
                             _filterPrompts();
                           });
                         },
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white.withValues(alpha: 0.2),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: IconButton(
+                        icon: const Icon(
+                          Icons.privacy_tip,
+                          color: Colors.white,
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const PrivacyPolicyPage(),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white.withValues(alpha: 0.2),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: PopupMenuButton<AppLocale>(
+                        icon: const Icon(Icons.language, color: Colors.white),
+                        onSelected: (AppLocale locale) {
+                          LocaleSettings.setLocale(locale).then((_) {
+                            if (!mounted) return;
+                            setState(() {});
+                          });
+                        },
+                        itemBuilder:
+                            (context) => [
+                              PopupMenuItem(
+                                value: AppLocale.ja,
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      'JA',
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight:
+                                            LocaleSettings.currentLocale ==
+                                                    AppLocale.ja
+                                                ? FontWeight.bold
+                                                : FontWeight.normal,
+                                      ),
+                                    ),
+                                    if (LocaleSettings.currentLocale ==
+                                        AppLocale.ja)
+                                      const Padding(
+                                        padding: EdgeInsets.only(left: 8),
+                                        child: Icon(Icons.check, size: 16),
+                                      ),
+                                  ],
+                                ),
+                              ),
+                              PopupMenuItem(
+                                value: AppLocale.en,
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      'EN',
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight:
+                                            LocaleSettings.currentLocale ==
+                                                    AppLocale.en
+                                                ? FontWeight.bold
+                                                : FontWeight.normal,
+                                      ),
+                                    ),
+                                    if (LocaleSettings.currentLocale ==
+                                        AppLocale.en)
+                                      const Padding(
+                                        padding: EdgeInsets.only(left: 8),
+                                        child: Icon(Icons.check, size: 16),
+                                      ),
+                                  ],
+                                ),
+                              ),
+                            ],
                       ),
                     ),
                   ],

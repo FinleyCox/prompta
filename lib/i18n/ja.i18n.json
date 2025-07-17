@@ -10,41 +10,41 @@
     },
     "addNewPage": {
         "title": "タイトル",
-        "titleHint": "この設定のタイトルを入力",
+        "titleHint": "このプロットのタイトルを入力",
         "trigger": "これを思いついたきっかけ",
         "triggerHint": "これを思いついたきっかけを入力",
         "character": "人物",
         "characterHint": "人物などを入力",
         "content": "内容",
-        "contentHint": "この設定の内容を入力してください",
+        "contentHint": "このプロットの内容を入力してください",
         "save": "保存",
         "cancel": "キャンセル",
-        "setting": "設定"
+        "setting": "プロット"
     },
     "editPromptPage": {
         "title": "編集",
         "titleLabel": "タイトル",
-        "titleHint": "設定のタイトルを入力",
+        "titleHint": "プロットのタイトルを入力",
         "characterLabel": "人物など",
         "characterHint": "人物などを入力",
         "triggerLabel": "きっかけ",
         "triggerHint": "これを書いたきっかけを入力してください",
         "contentLabel": "内容",
-        "contentHint": "この設定の内容を入力してください",
+        "contentHint": "このプロットの内容を入力してください",
         "save": "保存",
         "cancel": "キャンセル",
-        "setting": "設定"
+        "setting": "プロット"
     },
     "promptListPage": {
-        "title": "設定一覧",
+        "title": "プロット一覧",
         "search": "検索",
-        "searchHint": "設定を検索...",
+        "searchHint": "プロットを検索...",
         "favourites": "お気に入り",
         "all": "すべて",
         "noPrompts": "なし",
         "noFavourites": "お気に入りがありません",
-        "noPromptsMessage": "新しい設定を追加してみましょう",
-        "promptCount": "個の設定",
+        "noPromptsMessage": "新しいプロットを追加してみましょう",
+        "promptCount": "個のプロット",
         "edit": "編集",
         "history": "変更履歴",
         "delete": "削除",
@@ -53,7 +53,8 @@
         "yesterday": "昨日",
         "daysAgo": "日前",
         "newPrompt": "新規追加",
-        "cancel": "キャンセル"
+        "cancel": "キャンセル",
+        "privacyPolicy": "プライバシーポリシー"
     },
     "changeHistoryPage": {
         "title": "変更履歴",
@@ -63,6 +64,24 @@
         "content": "内容",
         "newest": "最新の内容",
         "before": "件前"
+    },
+    "privacyPolicyPage": {
+        "title": "プライバシーポリシー",
+        "lastUpdated": "最終更新日: 2025年7月",
+        "section1Title": "1. 収集する情報",
+        "section1Content": "このアプリは、あなたのプロット設定をデバイス内にローカルで保存します。個人情報を収集したり、外部サーバーにデータを送信することはありません。すべてのデータはローカルストレージを使用してデバイス内に安全に保存されます。",
+        "section2Title": "2. 情報の使用方法",
+        "section2Content": "このアプリで作成した情報は、プロット設定の保存、編集、管理機能を提供する目的でのみ使用されます。データを他の目的で使用することはありません。",
+        "section3Title": "3. データの保存",
+        "section3Content": "すべてのデータは安全なローカルストレージを使用してデバイス内に保存されます。私たちはあなたのデータにアクセスできず、サーバーや第三者に送信されることもありません。",
+        "section4Title": "4. データセキュリティ",
+        "section4Content": "あなたのデータはデバイスのセキュリティ機能によって保護されています。私たちは業界標準のセキュリティ対策を実装し、デバイス内のデータが安全に保たれるよう努めています。",
+        "section5Title": "5. 第三者サービス",
+        "section5Content": "このアプリは第三者広告サービスを通じて広告を表示する場合があります。これらのサービスは広告目的で匿名の使用データを収集する場合があります。詳細については、それぞれのプライバシーポリシーをご参照ください。",
+        "section6Title": "6. このポリシーの変更",
+        "section6Content": "このプライバシーポリシーは随時更新される場合があります。新しいプライバシーポリシーをこのページに掲載し、「最終更新日」を更新することで、変更をお知らせします。",
+        "contactTitle": "お問い合わせ",
+        "contactContent": "このプライバシーポリシーについてご質問がございましたら、アプリストアを通じてお問い合わせください。"
     },
     "validation": {
         "titleRequired": "タイトルを入力してください",
