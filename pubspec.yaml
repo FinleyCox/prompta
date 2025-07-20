@@ -1,8 +1,8 @@
 name: plotta
-description: "A new Flutter project."
+description: "Plotta - 創作のためのメモアプリ"
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+# publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -102,4 +102,4 @@ flutter_icons:
   adaptive_icon_foreground: assets/launcher_icon/android_icon.png
   android: true
   adaptive_icon_padding: true
-  min_sdk_android: 30 #Androidの最小SDKバージョン
+  min_sdk_android: 21 #Androidの最小SDKバージョン

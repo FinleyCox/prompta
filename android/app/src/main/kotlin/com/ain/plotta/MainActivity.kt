@@ -1,4 +1,4 @@
-package com.example.plotta
+package com.ain.plotta
 
 import io.flutter.embedding.android.FlutterActivity
 
