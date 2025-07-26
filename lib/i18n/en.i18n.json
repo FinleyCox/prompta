@@ -1,7 +1,7 @@
 {
     "mainScreen": {
-        "addNew": "Add New",
-        "edit": "Edit",
+        "addNew": "Add Plot",
+        "edit": "Content Check & Edit",
         "favourites": "Favourites"
     },
     "locales(map)": {
@@ -9,9 +9,10 @@
         "en": "English"
     },
     "addNewPage": {
-        "title": "title",
+        "title": "Title",
         "titleHint": "Enter the title of this plot",
         "trigger": "What inspired you to do this?",
+        "triggerLabel": "Trigger",
         "triggerHint": "Enter what inspired you to do this",
         "character": "Characters",
         "characterHint": "Enter the characters",
@@ -19,24 +20,25 @@
         "contentHint": "Enter the content of this plot",
         "save": "Save",
         "cancel": "Cancel",
-        "setting": "Plot"
+        "setting": "Content"
     },
     "editPromptPage": {
-        "title": "Edit",
+        "title": "Content Check & Edit",
         "titleLabel": "Title",
         "titleHint": "Enter plot title",
         "triggerLabel": "What inspired you to do this?",
         "triggerHint": "Enter what inspired you to do this",
         "characterLabel": "Characters",
+        "character": "Characters",
         "characterHint": "Enter the characters",
         "contentLabel": "Content",
         "contentHint": "Enter the content of this plot",
         "save": "Save",
         "cancel": "Cancel",
-        "setting": "Plot"
+        "setting": "Content"
     },
     "promptListPage": {
-        "title": "Plots List",
+        "title": "My Plots",
         "search": "Search",
         "searchHint": "Search plots...",
         "favourites": "Favourites",
@@ -45,14 +47,14 @@
         "noFavourites": "No Favourites",
         "noPromptsMessage": "Try adding a new plot",
         "promptCount": "plots",
-        "edit": "Edit",
+        "edit": "Content Check & Edit",
         "history": "History",
         "delete": "Delete",
         "deleteMessage": "Are you sure you want to delete?",
         "today": "Today",
         "yesterday": "Yesterday",
         "daysAgo": "days ago",
-        "newPrompt": "Add New",
+        "newPrompt": "Add Plot",
         "cancel": "Cancel",
         "privacyPolicy": "Privacy Policy"
     },

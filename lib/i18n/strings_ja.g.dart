@@ -57,7 +57,7 @@ class _TranslationsMainScreenJa implements TranslationsMainScreenEn {
 
 	// Translations
 	@override String get addNew => '新規作成';
-	@override String get edit => '編集';
+	@override String get edit => '内容確認・編集';
 	@override String get favourites => 'お気に入り';
 }
 
@@ -69,16 +69,17 @@ class _TranslationsAddNewPageJa implements TranslationsAddNewPageEn {
 
 	// Translations
 	@override String get title => 'タイトル';
-	@override String get titleHint => 'このプロットのタイトルを入力';
+	@override String get titleHint => 'このプロットのタイトルを入力してください';
 	@override String get trigger => 'これを思いついたきっかけ';
-	@override String get triggerHint => 'これを思いついたきっかけを入力';
+	@override String get triggerLabel => 'きっかけ';
+	@override String get triggerHint => 'これを思いついたきっかけを入力してください';
 	@override String get character => '人物';
-	@override String get characterHint => '人物などを入力';
+	@override String get characterHint => '人物などを入力してください';
 	@override String get content => '内容';
 	@override String get contentHint => 'このプロットの内容を入力してください';
 	@override String get save => '保存';
 	@override String get cancel => 'キャンセル';
-	@override String get setting => 'プロット';
+	@override String get setting => '内容';
 }
 
 // Path: editPromptPage
@@ -88,18 +89,19 @@ class _TranslationsEditPromptPageJa implements TranslationsEditPromptPageEn {
 	final TranslationsJa _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => '編集';
+	@override String get title => '内容確認・編集';
 	@override String get titleLabel => 'タイトル';
-	@override String get titleHint => 'プロットのタイトルを入力';
+	@override String get titleHint => 'このプロットのタイトルを入力してください';
 	@override String get characterLabel => '人物など';
-	@override String get characterHint => '人物などを入力';
+	@override String get character => '人物';
+	@override String get characterHint => '人物などを入力してください';
 	@override String get triggerLabel => 'きっかけ';
 	@override String get triggerHint => 'これを書いたきっかけを入力してください';
 	@override String get contentLabel => '内容';
 	@override String get contentHint => 'このプロットの内容を入力してください';
 	@override String get save => '保存';
 	@override String get cancel => 'キャンセル';
-	@override String get setting => 'プロット';
+	@override String get setting => '内容';
 }
 
 // Path: promptListPage
@@ -117,15 +119,15 @@ class _TranslationsPromptListPageJa implements TranslationsPromptListPageEn {
 	@override String get noPrompts => 'なし';
 	@override String get noFavourites => 'お気に入りがありません';
 	@override String get noPromptsMessage => '新しいプロットを追加してみましょう';
-	@override String get promptCount => '個のプロット';
-	@override String get edit => '編集';
+	@override String get promptCount => '件のプロット';
+	@override String get edit => '内容確認・編集';
 	@override String get history => '変更履歴';
 	@override String get delete => '削除';
 	@override String get deleteMessage => '本当に削除しますか？';
 	@override String get today => '今日';
 	@override String get yesterday => '昨日';
 	@override String get daysAgo => '日前';
-	@override String get newPrompt => '新規追加';
+	@override String get newPrompt => '新規作成';
 	@override String get cancel => 'キャンセル';
 	@override String get privacyPolicy => 'プライバシーポリシー';
 }
@@ -139,7 +141,7 @@ class _TranslationsChangeHistoryPageJa implements TranslationsChangeHistoryPageE
 	// Translations
 	@override String get title => '変更履歴';
 	@override String get noTitle => '(タイトルなし)';
-	@override String get character => '人物など';
+	@override String get character => '人物';
 	@override String get trigger => 'きっかけ';
 	@override String get content => '内容';
 	@override String get newest => '最新の内容';
@@ -188,33 +190,35 @@ extension on TranslationsJa {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
 			case 'mainScreen.addNew': return '新規作成';
-			case 'mainScreen.edit': return '編集';
+			case 'mainScreen.edit': return '内容確認・編集';
 			case 'mainScreen.favourites': return 'お気に入り';
 			case 'locales.ja': return '日本語';
 			case 'locales.en': return 'English';
 			case 'addNewPage.title': return 'タイトル';
-			case 'addNewPage.titleHint': return 'このプロットのタイトルを入力';
+			case 'addNewPage.titleHint': return 'このプロットのタイトルを入力してください';
 			case 'addNewPage.trigger': return 'これを思いついたきっかけ';
-			case 'addNewPage.triggerHint': return 'これを思いついたきっかけを入力';
+			case 'addNewPage.triggerLabel': return 'きっかけ';
+			case 'addNewPage.triggerHint': return 'これを思いついたきっかけを入力してください';
 			case 'addNewPage.character': return '人物';
-			case 'addNewPage.characterHint': return '人物などを入力';
+			case 'addNewPage.characterHint': return '人物などを入力してください';
 			case 'addNewPage.content': return '内容';
 			case 'addNewPage.contentHint': return 'このプロットの内容を入力してください';
 			case 'addNewPage.save': return '保存';
 			case 'addNewPage.cancel': return 'キャンセル';
-			case 'addNewPage.setting': return 'プロット';
-			case 'editPromptPage.title': return '編集';
+			case 'addNewPage.setting': return '内容';
+			case 'editPromptPage.title': return '内容確認・編集';
 			case 'editPromptPage.titleLabel': return 'タイトル';
-			case 'editPromptPage.titleHint': return 'プロットのタイトルを入力';
+			case 'editPromptPage.titleHint': return 'このプロットのタイトルを入力してください';
 			case 'editPromptPage.characterLabel': return '人物など';
-			case 'editPromptPage.characterHint': return '人物などを入力';
+			case 'editPromptPage.character': return '人物';
+			case 'editPromptPage.characterHint': return '人物などを入力してください';
 			case 'editPromptPage.triggerLabel': return 'きっかけ';
 			case 'editPromptPage.triggerHint': return 'これを書いたきっかけを入力してください';
 			case 'editPromptPage.contentLabel': return '内容';
 			case 'editPromptPage.contentHint': return 'このプロットの内容を入力してください';
 			case 'editPromptPage.save': return '保存';
 			case 'editPromptPage.cancel': return 'キャンセル';
-			case 'editPromptPage.setting': return 'プロット';
+			case 'editPromptPage.setting': return '内容';
 			case 'promptListPage.title': return 'プロット一覧';
 			case 'promptListPage.search': return '検索';
 			case 'promptListPage.searchHint': return 'プロットを検索...';
@@ -223,20 +227,20 @@ extension on TranslationsJa {
 			case 'promptListPage.noPrompts': return 'なし';
 			case 'promptListPage.noFavourites': return 'お気に入りがありません';
 			case 'promptListPage.noPromptsMessage': return '新しいプロットを追加してみましょう';
-			case 'promptListPage.promptCount': return '個のプロット';
-			case 'promptListPage.edit': return '編集';
+			case 'promptListPage.promptCount': return '件のプロット';
+			case 'promptListPage.edit': return '内容確認・編集';
 			case 'promptListPage.history': return '変更履歴';
 			case 'promptListPage.delete': return '削除';
 			case 'promptListPage.deleteMessage': return '本当に削除しますか？';
 			case 'promptListPage.today': return '今日';
 			case 'promptListPage.yesterday': return '昨日';
 			case 'promptListPage.daysAgo': return '日前';
-			case 'promptListPage.newPrompt': return '新規追加';
+			case 'promptListPage.newPrompt': return '新規作成';
 			case 'promptListPage.cancel': return 'キャンセル';
 			case 'promptListPage.privacyPolicy': return 'プライバシーポリシー';
 			case 'changeHistoryPage.title': return '変更履歴';
 			case 'changeHistoryPage.noTitle': return '(タイトルなし)';
-			case 'changeHistoryPage.character': return '人物など';
+			case 'changeHistoryPage.character': return '人物';
 			case 'changeHistoryPage.trigger': return 'きっかけ';
 			case 'changeHistoryPage.content': return '内容';
 			case 'changeHistoryPage.newest': return '最新の内容';

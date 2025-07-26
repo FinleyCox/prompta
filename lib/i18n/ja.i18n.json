@@ -1,7 +1,7 @@
 {
     "mainScreen": {
         "addNew": "新規作成",
-        "edit": "編集",
+        "edit": "内容確認・編集",
         "favourites": "お気に入り"
     },
     "locales(map)": {
@@ -10,30 +10,32 @@
     },
     "addNewPage": {
         "title": "タイトル",
-        "titleHint": "このプロットのタイトルを入力",
+        "titleHint": "このプロットのタイトルを入力してください",
         "trigger": "これを思いついたきっかけ",
-        "triggerHint": "これを思いついたきっかけを入力",
+        "triggerLabel": "きっかけ",
+        "triggerHint": "これを思いついたきっかけを入力してください",
         "character": "人物",
-        "characterHint": "人物などを入力",
+        "characterHint": "人物などを入力してください",
         "content": "内容",
         "contentHint": "このプロットの内容を入力してください",
         "save": "保存",
         "cancel": "キャンセル",
-        "setting": "プロット"
+        "setting": "内容"
     },
     "editPromptPage": {
-        "title": "編集",
+        "title": "内容確認・編集",
         "titleLabel": "タイトル",
-        "titleHint": "プロットのタイトルを入力",
+        "titleHint": "このプロットのタイトルを入力してください",
         "characterLabel": "人物など",
-        "characterHint": "人物などを入力",
+        "character": "人物",
+        "characterHint": "人物などを入力してください",
         "triggerLabel": "きっかけ",
         "triggerHint": "これを書いたきっかけを入力してください",
         "contentLabel": "内容",
         "contentHint": "このプロットの内容を入力してください",
         "save": "保存",
         "cancel": "キャンセル",
-        "setting": "プロット"
+        "setting": "内容"
     },
     "promptListPage": {
         "title": "プロット一覧",
@@ -44,22 +46,22 @@
         "noPrompts": "なし",
         "noFavourites": "お気に入りがありません",
         "noPromptsMessage": "新しいプロットを追加してみましょう",
-        "promptCount": "個のプロット",
-        "edit": "編集",
+        "promptCount": "件のプロット",
+        "edit": "内容確認・編集",
         "history": "変更履歴",
         "delete": "削除",
         "deleteMessage": "本当に削除しますか？",
         "today": "今日",
         "yesterday": "昨日",
         "daysAgo": "日前",
-        "newPrompt": "新規追加",
+        "newPrompt": "新規作成",
         "cancel": "キャンセル",
         "privacyPolicy": "プライバシーポリシー"
     },
     "changeHistoryPage": {
         "title": "変更履歴",
         "noTitle": "(タイトルなし)",
-        "character": "人物など",
+        "character": "人物",
         "trigger": "きっかけ",
         "content": "内容",
         "newest": "最新の内容",

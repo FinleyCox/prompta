@@ -19,7 +19,11 @@ class _AddNewPageState extends State<AddNewPage> with TickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _slideAnimation;
   late Animation<double> _fadeAnimation;
-  bool _isKeyboardVisible = false;
+  late ScrollController _scrollController;
+  late FocusNode _titleFocusNode;
+  late FocusNode _triggerFocusNode;
+  late FocusNode _characterFocusNode;
+  late FocusNode _contentFocusNode;
 
   @override
   void initState() {
@@ -34,7 +38,27 @@ class _AddNewPageState extends State<AddNewPage> with TickerProviderStateMixin {
     _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(parent: _animationController, curve: Curves.easeIn),
     );
+    _scrollController = ScrollController();
+    _titleFocusNode = FocusNode();
+    _triggerFocusNode = FocusNode();
+    _characterFocusNode = FocusNode();
+    _contentFocusNode = FocusNode();
+
     _animationController.forward();
+    // フォーカス変更時のスクロール処理
+    _contentFocusNode.addListener(() {
+      if (_contentFocusNode.hasFocus) {
+        Future.delayed(const Duration(milliseconds: 300), () {
+          if (_scrollController.hasClients) {
+            _scrollController.animateTo(
+              _scrollController.position.maxScrollExtent,
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeOut,
+            );
+          }
+        });
+      }
+    });
   }
 
   @override
@@ -44,35 +68,26 @@ class _AddNewPageState extends State<AddNewPage> with TickerProviderStateMixin {
     _triggerController.dispose();
     _characterController.dispose();
     _contentController.dispose();
+    _scrollController.dispose();
+    _titleFocusNode.dispose();
+    _triggerFocusNode.dispose();
+    _characterFocusNode.dispose();
+    _contentFocusNode.dispose();
     super.dispose();
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    // キーボードの表示状態を監視
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      final keyboardHeight = MediaQuery.of(context).viewInsets.bottom;
-      final newKeyboardVisible = keyboardHeight > 0;
-      if (_isKeyboardVisible != newKeyboardVisible) {
-        setState(() {
-          _isKeyboardVisible = newKeyboardVisible;
-        });
-      }
-    });
   }
 
   // 設定を保存する
   void _savePrompt() async {
     final validation = context.t.validation;
 
-    // 内容が空の場合はエラーを表示
-    if (_contentController.text.trim().isEmpty) {
+    // タイトルが空の場合はエラーを表示
+    if (_titleController.text.trim().isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(validation.contentRequired),
+          content: Text(validation.titleRequired),
           backgroundColor: Colors.red.shade400,
           behavior: SnackBarBehavior.floating,
+          duration: const Duration(seconds: 2),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         ),
       );
@@ -173,78 +188,128 @@ class _AddNewPageState extends State<AddNewPage> with TickerProviderStateMixin {
                               ),
                             ],
                           ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                translations.title,
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black87,
-                                ),
-                              ),
-                              const SizedBox(height: 8),
-                              TextField(
-                                controller: _titleController,
-                                decoration: InputDecoration(
-                                  hintText: translations.titleHint,
-                                  hintStyle: TextStyle(
-                                    color: Colors.grey.shade400,
-                                  ),
-                                  filled: true,
-                                  fillColor: Colors.grey.shade50,
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(12),
-                                    borderSide: BorderSide.none,
-                                  ),
-                                  contentPadding: const EdgeInsets.symmetric(
-                                    horizontal: 16,
-                                    vertical: 16,
+                          child: SingleChildScrollView(
+                            controller: _scrollController,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  translations.title,
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black87,
                                   ),
                                 ),
-                                style: const TextStyle(fontSize: 16),
-                              ),
-                              const SizedBox(height: 24),
-                              Text(
-                                translations.content,
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black87,
+                                const SizedBox(height: 8),
+                                TextField(
+                                  controller: _titleController,
+                                  focusNode: _titleFocusNode,
+                                  decoration: InputDecoration(
+                                    hintText: translations.titleHint,
+                                    hintStyle: TextStyle(
+                                      color: Colors.grey.shade400,
+                                    ),
+                                    filled: true,
+                                    fillColor: Colors.grey.shade50,
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(12),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    contentPadding: const EdgeInsets.symmetric(
+                                      horizontal: 16,
+                                      vertical: 16,
+                                    ),
+                                  ),
+                                  style: const TextStyle(fontSize: 16),
                                 ),
-                              ),
-                              const SizedBox(height: 8),
-                              Expanded(
-                                child: Column(
+                                const SizedBox(height: 16),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
+                                    Text(
+                                      translations.triggerLabel,
+                                      style: const TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black87,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 16),
                                     TextField(
                                       controller: _triggerController,
+                                      focusNode: _triggerFocusNode,
                                       maxLines: 1,
-                                      textAlignVertical: TextAlignVertical.top,
                                       decoration: InputDecoration(
                                         hintText: translations.trigger,
                                         hintStyle: TextStyle(
                                           color: Colors.grey.shade400,
                                         ),
+                                        filled: true,
+                                        fillColor: Colors.grey.shade50,
+                                        border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            12,
+                                          ),
+                                          borderSide: BorderSide.none,
+                                        ),
+                                        contentPadding:
+                                            const EdgeInsets.symmetric(
+                                              horizontal: 16,
+                                              vertical: 12,
+                                            ),
                                       ),
+                                      style: const TextStyle(fontSize: 16),
                                     ),
                                     const SizedBox(height: 16),
+                                    Text(
+                                      translations.character,
+                                      style: const TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black87,
+                                      ),
+                                    ),
                                     TextField(
                                       controller: _characterController,
+                                      focusNode: _characterFocusNode,
                                       maxLines: 1,
-                                      textAlignVertical: TextAlignVertical.top,
                                       decoration: InputDecoration(
-                                        hintText: translations.character,
+                                        hintText: translations.characterHint,
                                         hintStyle: TextStyle(
                                           color: Colors.grey.shade400,
                                         ),
+                                        filled: true,
+                                        fillColor: Colors.grey.shade50,
+                                        border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            12,
+                                          ),
+                                          borderSide: BorderSide.none,
+                                        ),
+                                        contentPadding:
+                                            const EdgeInsets.symmetric(
+                                              horizontal: 16,
+                                              vertical: 12,
+                                            ),
                                       ),
+                                      style: const TextStyle(fontSize: 16),
                                     ),
                                     const SizedBox(height: 16),
-                                    Expanded(
-                                      child: TextField(
+                                    Text(
+                                      translations.content,
+                                      style: const TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black87,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 8),
+                                    SizedBox(
+                                      height: 250,
+                                      child: TextFormField(
                                         controller: _contentController,
+                                        focusNode: _contentFocusNode,
                                         maxLines: null,
                                         expands: true,
                                         textAlignVertical:
@@ -254,14 +319,24 @@ class _AddNewPageState extends State<AddNewPage> with TickerProviderStateMixin {
                                           hintStyle: TextStyle(
                                             color: Colors.grey.shade400,
                                           ),
+                                          filled: true,
+                                          fillColor: Colors.grey.shade50,
+                                          border: OutlineInputBorder(
+                                            borderRadius: BorderRadius.circular(
+                                              12,
+                                            ),
+                                            borderSide: BorderSide.none,
+                                          ),
+                                          contentPadding: const EdgeInsets.all(
+                                            16,
+                                          ),
                                         ),
+                                        style: const TextStyle(fontSize: 16),
                                       ),
                                     ),
                                   ],
                                 ),
-                              ),
-                              const SizedBox(height: 16),
-                              if (!_isKeyboardVisible) ...[
+                                const SizedBox(height: 16),
                                 Row(
                                   children: [
                                     Expanded(
@@ -359,7 +434,7 @@ class _AddNewPageState extends State<AddNewPage> with TickerProviderStateMixin {
                                   ],
                                 ),
                               ],
-                            ],
+                            ),
                           ),
                         ),
                       ),
