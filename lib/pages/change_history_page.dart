@@ -99,11 +99,10 @@ class _ChangeHistoryPageState extends State<ChangeHistoryPage>
                                 borderRadius: BorderRadius.circular(12),
                               ),
                               child: IconButton(
-                                icon: const Icon(
-                                  Icons.arrow_back,
-                                  color: Colors.white,
-                                ),
-                                onPressed: () => Navigator.pop(context),
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                icon: const Icon(Icons.arrow_back),
                               ),
                             ),
                             const SizedBox(width: 16),
@@ -128,13 +127,6 @@ class _ChangeHistoryPageState extends State<ChangeHistoryPage>
                               decoration: BoxDecoration(
                                 color: Colors.white.withValues(alpha: 0.2),
                                 borderRadius: BorderRadius.circular(12),
-                              ),
-                              child: IconButton(
-                                icon: const Icon(
-                                  Icons.history,
-                                  color: Colors.white,
-                                ),
-                                onPressed: null,
                               ),
                             ),
                           ],
