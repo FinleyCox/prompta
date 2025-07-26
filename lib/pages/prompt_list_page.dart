@@ -183,7 +183,7 @@ class _PromptListPageState extends State<PromptListPage>
                                 child: Row(
                                   children: [
                                     Text(
-                                      'JA',
+                                      'JP',
                                       style: TextStyle(
                                         fontSize: 16,
                                         fontWeight:
@@ -510,12 +510,12 @@ class _PromptListPageState extends State<PromptListPage>
               ),
               const SizedBox(height: 8),
               Text(
-                prompt.character,
+                prompt.trigger,
                 style: TextStyle(fontSize: 14, color: Colors.grey.shade600),
               ),
               const SizedBox(height: 8),
               Text(
-                prompt.trigger,
+                prompt.character,
                 style: TextStyle(fontSize: 14, color: Colors.grey.shade600),
               ),
               const SizedBox(height: 8),

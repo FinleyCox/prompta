@@ -45,12 +45,18 @@ class HiveService {
 
   // 全件取得
   static List<PromptModel> getAllPrompts() {
-    return promptBox.values.toList();
+    // 新しいものから上にする
+    final prompts = promptBox.values.toList();
+    prompts.sort((a, b) => b.createdAt.compareTo(a.createdAt));
+    return prompts;
   }
 
   // お気に入り取得
   static List<PromptModel> getFavoritePrompts() {
-    return promptBox.values.where((prompt) => prompt.isFavorite).toList();
+    final prompts =
+        promptBox.values.where((prompt) => prompt.isFavorite).toList();
+    prompts.sort((a, b) => b.createdAt.compareTo(a.createdAt));
+    return prompts;
   }
 
   // IDで取得
@@ -87,7 +93,9 @@ class HiveService {
         .where(
           (prompt) =>
               prompt.title.toLowerCase().contains(query.toLowerCase()) ||
-              prompt.content.toLowerCase().contains(query.toLowerCase()),
+              prompt.content.toLowerCase().contains(query.toLowerCase()) ||
+              prompt.character.toLowerCase().contains(query.toLowerCase()) ||
+              prompt.trigger.toLowerCase().contains(query.toLowerCase()),
         )
         .toList();
   }

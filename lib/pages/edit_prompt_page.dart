@@ -23,7 +23,11 @@ class _EditPromptPageState extends State<EditPromptPage>
   late AnimationController _animationController;
   late Animation<double> _slideAnimation;
   late Animation<double> _fadeAnimation;
-  bool _isKeyboardVisible = false;
+  late ScrollController _scrollController;
+  late FocusNode _titleFocusNode;
+  late FocusNode _triggerFocusNode;
+  late FocusNode _characterFocusNode;
+  late FocusNode _contentFocusNode;
 
   @override
   void initState() {
@@ -33,6 +37,11 @@ class _EditPromptPageState extends State<EditPromptPage>
     _characterController = TextEditingController(text: widget.prompt.character);
     _contentController = TextEditingController(text: widget.prompt.content);
     _isFavorite = widget.prompt.isFavorite;
+    _scrollController = ScrollController();
+    _titleFocusNode = FocusNode();
+    _triggerFocusNode = FocusNode();
+    _characterFocusNode = FocusNode();
+    _contentFocusNode = FocusNode();
 
     _animationController = AnimationController(
       duration: const Duration(milliseconds: 600),
@@ -45,6 +54,21 @@ class _EditPromptPageState extends State<EditPromptPage>
       CurvedAnimation(parent: _animationController, curve: Curves.easeIn),
     );
     _animationController.forward();
+
+    // フォーカス変更時のスクロール処理
+    _contentFocusNode.addListener(() {
+      if (_contentFocusNode.hasFocus) {
+        Future.delayed(const Duration(milliseconds: 300), () {
+          if (_scrollController.hasClients) {
+            _scrollController.animateTo(
+              _scrollController.position.maxScrollExtent,
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeOut,
+            );
+          }
+        });
+      }
+    });
   }
 
   @override
@@ -54,22 +78,12 @@ class _EditPromptPageState extends State<EditPromptPage>
     _triggerController.dispose();
     _characterController.dispose();
     _contentController.dispose();
+    _scrollController.dispose();
+    _titleFocusNode.dispose();
+    _triggerFocusNode.dispose();
+    _characterFocusNode.dispose();
+    _contentFocusNode.dispose();
     super.dispose();
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    // キーボードの表示状態を監視
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      final keyboardHeight = MediaQuery.of(context).viewInsets.bottom;
-      final newKeyboardVisible = keyboardHeight > 0;
-      if (_isKeyboardVisible != newKeyboardVisible) {
-        setState(() {
-          _isKeyboardVisible = newKeyboardVisible;
-        });
-      }
-    });
   }
 
   @override
@@ -170,78 +184,57 @@ class _EditPromptPageState extends State<EditPromptPage>
                               ),
                             ],
                           ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                translations.titleLabel,
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black87,
-                                ),
-                              ),
-                              const SizedBox(height: 8),
-                              TextField(
-                                controller: _titleController,
-                                decoration: InputDecoration(
-                                  hintText: translations.titleHint,
-                                  hintStyle: TextStyle(
-                                    color: Colors.grey.shade400,
-                                  ),
-                                  filled: true,
-                                  fillColor: Colors.grey.shade50,
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(12),
-                                    borderSide: BorderSide.none,
-                                  ),
-                                  contentPadding: const EdgeInsets.symmetric(
-                                    horizontal: 16,
-                                    vertical: 16,
+                          child: SingleChildScrollView(
+                            controller: _scrollController,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  translations.titleLabel,
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black87,
                                   ),
                                 ),
-                                style: const TextStyle(fontSize: 16),
-                              ),
-                              const SizedBox(height: 24),
-                              Text(
-                                translations.setting,
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black87,
+                                const SizedBox(height: 8),
+                                TextField(
+                                  controller: _titleController,
+                                  focusNode: _titleFocusNode,
+                                  decoration: InputDecoration(
+                                    hintText: translations.titleHint,
+                                    hintStyle: TextStyle(
+                                      color: Colors.grey.shade400,
+                                    ),
+                                    filled: true,
+                                    fillColor: Colors.grey.shade50,
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(12),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    contentPadding: const EdgeInsets.symmetric(
+                                      horizontal: 16,
+                                      vertical: 16,
+                                    ),
+                                  ),
+                                  style: const TextStyle(fontSize: 16),
                                 ),
-                              ),
-                              const SizedBox(height: 8),
-                              Expanded(
-                                child: Column(
+                                const SizedBox(height: 24),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    TextField(
-                                      controller: _characterController,
-                                      maxLines: 1,
-                                      decoration: InputDecoration(
-                                        hintText: translations.characterHint,
-                                        hintStyle: TextStyle(
-                                          color: Colors.grey.shade400,
-                                        ),
-                                        filled: true,
-                                        fillColor: Colors.grey.shade50,
-                                        border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(
-                                            12,
-                                          ),
-                                          borderSide: BorderSide.none,
-                                        ),
-                                        contentPadding:
-                                            const EdgeInsets.symmetric(
-                                              horizontal: 16,
-                                              vertical: 12,
-                                            ),
+                                    Text(
+                                      translations.triggerLabel,
+                                      style: const TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black87,
                                       ),
-                                      style: const TextStyle(fontSize: 16),
                                     ),
                                     const SizedBox(height: 16),
                                     TextField(
                                       controller: _triggerController,
+                                      focusNode: _triggerFocusNode,
                                       maxLines: 1,
                                       decoration: InputDecoration(
                                         hintText: translations.triggerHint,
@@ -265,9 +258,54 @@ class _EditPromptPageState extends State<EditPromptPage>
                                       style: const TextStyle(fontSize: 16),
                                     ),
                                     const SizedBox(height: 16),
-                                    Expanded(
+                                    Text(
+                                      translations.character,
+                                      style: const TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black87,
+                                      ),
+                                    ),
+                                    TextField(
+                                      controller: _characterController,
+                                      focusNode: _characterFocusNode,
+                                      maxLines: 1,
+                                      decoration: InputDecoration(
+                                        hintText: translations.characterHint,
+                                        hintStyle: TextStyle(
+                                          color: Colors.grey.shade400,
+                                        ),
+                                        filled: true,
+                                        fillColor: Colors.grey.shade50,
+                                        border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            12,
+                                          ),
+                                          borderSide: BorderSide.none,
+                                        ),
+                                        contentPadding:
+                                            const EdgeInsets.symmetric(
+                                              horizontal: 16,
+                                              vertical: 12,
+                                            ),
+                                      ),
+                                      style: const TextStyle(fontSize: 16),
+                                    ),
+                                    const SizedBox(height: 16),
+                                    Text(
+                                      translations.contentLabel,
+                                      style: const TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black87,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 8),
+                                    SizedBox(
+                                      height: 250,
                                       child: TextField(
                                         controller: _contentController,
+                                        focusNode: _contentFocusNode,
                                         maxLines: null,
                                         expands: true,
                                         textAlignVertical:
@@ -294,9 +332,7 @@ class _EditPromptPageState extends State<EditPromptPage>
                                     ),
                                   ],
                                 ),
-                              ),
-                              const SizedBox(height: 16),
-                              if (!_isKeyboardVisible) ...[
+                                const SizedBox(height: 16),
                                 Row(
                                   children: [
                                     Expanded(
@@ -394,7 +430,7 @@ class _EditPromptPageState extends State<EditPromptPage>
                                   ],
                                 ),
                               ],
-                            ],
+                            ),
                           ),
                         ),
                       ),
@@ -410,20 +446,6 @@ class _EditPromptPageState extends State<EditPromptPage>
   }
 
   void _savePrompt() async {
-    final validation = context.t.validation;
-
-    if (_contentController.text.trim().isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(validation.contentRequired),
-          backgroundColor: Colors.red.shade400,
-          behavior: SnackBarBehavior.floating,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-        ),
-      );
-      return;
-    }
-
     final updatedPrompt = widget.prompt.copyWith(
       title: _titleController.text.trim(),
       trigger: _triggerController.text.trim(),

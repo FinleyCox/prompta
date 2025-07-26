@@ -5,6 +5,7 @@ import 'i18n/strings.g.dart';
 import 'pages/prompt_list_page.dart';
 import 'services/hive_service.dart';
 import 'services/ad_service.dart';
+import 'package:flutter/services.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,6 +18,9 @@ void main() async {
 
   // 広告を初期化（環境に応じて自動で切り替わる）
   await AdService.initialize();
+
+  // 画面の向きを縦に固定
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
   runApp(const MyApp());
 }

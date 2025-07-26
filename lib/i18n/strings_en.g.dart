@@ -59,8 +59,8 @@ class TranslationsMainScreenEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get addNew => 'Add New';
-	String get edit => 'Edit';
+	String get addNew => 'Add Plot';
+	String get edit => 'Content Check & Edit';
 	String get favourites => 'Favourites';
 }
 
@@ -71,9 +71,10 @@ class TranslationsAddNewPageEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get title => 'title';
+	String get title => 'Title';
 	String get titleHint => 'Enter the title of this plot';
 	String get trigger => 'What inspired you to do this?';
+	String get triggerLabel => 'Trigger';
 	String get triggerHint => 'Enter what inspired you to do this';
 	String get character => 'Characters';
 	String get characterHint => 'Enter the characters';
@@ -81,7 +82,7 @@ class TranslationsAddNewPageEn {
 	String get contentHint => 'Enter the content of this plot';
 	String get save => 'Save';
 	String get cancel => 'Cancel';
-	String get setting => 'Plot';
+	String get setting => 'Content';
 }
 
 // Path: editPromptPage
@@ -91,18 +92,19 @@ class TranslationsEditPromptPageEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get title => 'Edit';
+	String get title => 'Content Check & Edit';
 	String get titleLabel => 'Title';
 	String get titleHint => 'Enter plot title';
 	String get triggerLabel => 'What inspired you to do this?';
 	String get triggerHint => 'Enter what inspired you to do this';
 	String get characterLabel => 'Characters';
+	String get character => 'Characters';
 	String get characterHint => 'Enter the characters';
 	String get contentLabel => 'Content';
 	String get contentHint => 'Enter the content of this plot';
 	String get save => 'Save';
 	String get cancel => 'Cancel';
-	String get setting => 'Plot';
+	String get setting => 'Content';
 }
 
 // Path: promptListPage
@@ -112,7 +114,7 @@ class TranslationsPromptListPageEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get title => 'Plots List';
+	String get title => 'My Plots';
 	String get search => 'Search';
 	String get searchHint => 'Search plots...';
 	String get favourites => 'Favourites';
@@ -121,14 +123,14 @@ class TranslationsPromptListPageEn {
 	String get noFavourites => 'No Favourites';
 	String get noPromptsMessage => 'Try adding a new plot';
 	String get promptCount => 'plots';
-	String get edit => 'Edit';
+	String get edit => 'Content Check & Edit';
 	String get history => 'History';
 	String get delete => 'Delete';
 	String get deleteMessage => 'Are you sure you want to delete?';
 	String get today => 'Today';
 	String get yesterday => 'Yesterday';
 	String get daysAgo => 'days ago';
-	String get newPrompt => 'Add New';
+	String get newPrompt => 'Add Plot';
 	String get cancel => 'Cancel';
 	String get privacyPolicy => 'Privacy Policy';
 }
@@ -190,14 +192,15 @@ class TranslationsValidationEn {
 extension on Translations {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
-			case 'mainScreen.addNew': return 'Add New';
-			case 'mainScreen.edit': return 'Edit';
+			case 'mainScreen.addNew': return 'Add Plot';
+			case 'mainScreen.edit': return 'Content Check & Edit';
 			case 'mainScreen.favourites': return 'Favourites';
 			case 'locales.ja': return '日本語';
 			case 'locales.en': return 'English';
-			case 'addNewPage.title': return 'title';
+			case 'addNewPage.title': return 'Title';
 			case 'addNewPage.titleHint': return 'Enter the title of this plot';
 			case 'addNewPage.trigger': return 'What inspired you to do this?';
+			case 'addNewPage.triggerLabel': return 'Trigger';
 			case 'addNewPage.triggerHint': return 'Enter what inspired you to do this';
 			case 'addNewPage.character': return 'Characters';
 			case 'addNewPage.characterHint': return 'Enter the characters';
@@ -205,20 +208,21 @@ extension on Translations {
 			case 'addNewPage.contentHint': return 'Enter the content of this plot';
 			case 'addNewPage.save': return 'Save';
 			case 'addNewPage.cancel': return 'Cancel';
-			case 'addNewPage.setting': return 'Plot';
-			case 'editPromptPage.title': return 'Edit';
+			case 'addNewPage.setting': return 'Content';
+			case 'editPromptPage.title': return 'Content Check & Edit';
 			case 'editPromptPage.titleLabel': return 'Title';
 			case 'editPromptPage.titleHint': return 'Enter plot title';
 			case 'editPromptPage.triggerLabel': return 'What inspired you to do this?';
 			case 'editPromptPage.triggerHint': return 'Enter what inspired you to do this';
 			case 'editPromptPage.characterLabel': return 'Characters';
+			case 'editPromptPage.character': return 'Characters';
 			case 'editPromptPage.characterHint': return 'Enter the characters';
 			case 'editPromptPage.contentLabel': return 'Content';
 			case 'editPromptPage.contentHint': return 'Enter the content of this plot';
 			case 'editPromptPage.save': return 'Save';
 			case 'editPromptPage.cancel': return 'Cancel';
-			case 'editPromptPage.setting': return 'Plot';
-			case 'promptListPage.title': return 'Plots List';
+			case 'editPromptPage.setting': return 'Content';
+			case 'promptListPage.title': return 'My Plots';
 			case 'promptListPage.search': return 'Search';
 			case 'promptListPage.searchHint': return 'Search plots...';
 			case 'promptListPage.favourites': return 'Favourites';
@@ -227,14 +231,14 @@ extension on Translations {
 			case 'promptListPage.noFavourites': return 'No Favourites';
 			case 'promptListPage.noPromptsMessage': return 'Try adding a new plot';
 			case 'promptListPage.promptCount': return 'plots';
-			case 'promptListPage.edit': return 'Edit';
+			case 'promptListPage.edit': return 'Content Check & Edit';
 			case 'promptListPage.history': return 'History';
 			case 'promptListPage.delete': return 'Delete';
 			case 'promptListPage.deleteMessage': return 'Are you sure you want to delete?';
 			case 'promptListPage.today': return 'Today';
 			case 'promptListPage.yesterday': return 'Yesterday';
 			case 'promptListPage.daysAgo': return 'days ago';
-			case 'promptListPage.newPrompt': return 'Add New';
+			case 'promptListPage.newPrompt': return 'Add Plot';
 			case 'promptListPage.cancel': return 'Cancel';
 			case 'promptListPage.privacyPolicy': return 'Privacy Policy';
 			case 'changeHistoryPage.title': return 'Change History';
