@@ -52,6 +52,11 @@ class _ChangeHistoryPageState extends State<ChangeHistoryPage>
       CurvedAnimation(parent: _animationController, curve: Curves.easeIn),
     );
     _animationController.forward();
+
+    // ページ変更を監視してUIを更新
+    _pageController.addListener(() {
+      setState(() {});
+    });
   }
 
   @override
@@ -135,7 +140,6 @@ class _ChangeHistoryPageState extends State<ChangeHistoryPage>
                           ],
                         ),
                       ),
-
                       // 履歴表示
                       Expanded(
                         child: Container(
@@ -216,7 +220,7 @@ class _ChangeHistoryPageState extends State<ChangeHistoryPage>
                                   ],
                                   if (h.trigger.isNotEmpty) ...[
                                     Text(
-                                      'トリガー',
+                                      translations.trigger,
                                       style: const TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold,
@@ -279,6 +283,41 @@ class _ChangeHistoryPageState extends State<ChangeHistoryPage>
                               );
                             },
                           ),
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 16,
+                        ),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: List.generate(
+                                _histories.length,
+                                (index) => AnimatedContainer(
+                                  duration: const Duration(milliseconds: 300),
+                                  margin: const EdgeInsets.symmetric(
+                                    horizontal: 4,
+                                  ),
+                                  width: 8,
+                                  height: 8,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color:
+                                        _pageController.hasClients &&
+                                                _pageController.page?.round() ==
+                                                    index
+                                            ? Colors.white
+                                            : Colors.white.withValues(
+                                              alpha: 0.5,
+                                            ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],
